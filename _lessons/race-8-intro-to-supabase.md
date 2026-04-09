@@ -6,12 +6,9 @@ I dag introducerer vi web app som begreb og sætter det i perspektiv til det, vi
 
 ## Forberedelse
 
-- **Se:** [What Is Supabase? - What Is Web Development](https://www.youtube.com/watch?v=v2W7QJMMIA0)
-
-> Note: Forsøg at få så meget med fra videoen, som du kan. Det er helt ok, hvis ikke alt giver mening første gang.
-
-- **Undersøg:** [Supabase – Build in a weekend, scale to millions](https://supabase.com/)
-- **Læs:** [Difference Between Web Application and Website](https://www.geeksforgeeks.org/websites-apps/difference-between-web-application-and-website/)
+- **Se videoen**: [What Is Supabase? - What Is Web Development](https://www.youtube.com/watch?v=v2W7QJMMIA0) – forsøg at få så meget med, som du kan. Det er helt ok, hvis ikke alt giver mening første gang.
+- **Undersøg** [supabase.com](https://supabase.com/) og dan dig et indtryk af, hvad Supabase er for noget. Hvad tilbyder de? Hvem er det til? Klik dig rundt og udforsk.
+- **Læs** artiklen [Difference Between Web Application and Website](https://www.geeksforgeeks.org/websites-apps/difference-between-web-application-and-website/).
 
 ## Agenda
 
