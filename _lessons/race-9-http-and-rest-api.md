@@ -24,7 +24,7 @@ Supplerende artikler (ikke obligatorisk):
 
 - Reflekterer over, hvad vi lavede sidst, og hvilke muligheder det giver.
 - Hvad er Supabase, og hvordan vi kan bruge Supabase, når vi bygger web apps?
-- Ud fra den viden du har nu: Hvad er CRUD, HTTP og REST? Og hvad er BaaS?
+- Ud fra den viden I har nu: Hvad er CRUD, HTTP og REST? Og hvad er BaaS?
 - Hvad bruger vi Thunder Client til i workflowet?
 
 </details>
@@ -32,12 +32,12 @@ Supplerende artikler (ikke obligatorisk):
 <details>
 	<summary><strong>2. HTTP i dybden</strong></summary>
     
-- Læs artiklen [What Is HTTP?](https://www.codecademy.com/article/what-is-http).
-- Skriv med egne ord: Hvad er en request, og hvad er en response?
-- Skriv med egne ord: Hvad bruger vi HTTP-metoder til?
-- Find mindst to konkrete eksempler i Thunder Client, fx en GET og en POST.
-- Peg i hvert eksempel på method, URL, headers, body og statuskode.
-- Forklar kort, hvordan eksemplerne fra Thunder Client hænger sammen med det, artiklen beskriver.
+ - Læs artiklen [What Is HTTP?](https://www.codecademy.com/article/what-is-http).
+ - Skriv med egne ord: Hvad er en request, og hvad er en response?
+ - Skriv med egne ord: Hvad bruger vi HTTP-metoder til?
+ - Find mindst to konkrete eksempler i Thunder Client, fx en GET og en POST.
+ - Peg i hvert eksempel på method, URL, headers, body og statuskode.
+ - Forklar kort, hvordan eksemplerne fra Thunder Client hænger sammen med det, artiklen beskriver.
 
 </details>
 
@@ -68,9 +68,9 @@ Supplerende artikler (ikke obligatorisk):
 	<summary><strong>5. Øvelse: Fra API-kald i Thunder Client til React App</strong></summary>
 
 - Vi starter React-delen her og arbejder med GET, POST, PATCH og DELETE.
-- Brug øvelsen i [\_exercises/race-9-oevelse-thunderclient-til-react.md](_exercises/race-9-oevelse-thunderclient-til-react.md).
+- Brug øvelsen [Fra Thunder Client til React](/_exercises/race-9-oevelse-thunderclient-til-react.md).
 - Målet er at oversætte jeres API-kald fra Thunder Client til kode i React, så flowet bliver det samme.
-- Delmål i øvelsen: implementer GET, POST, PATCH og DELETE i React, verificer i database og UI, og at det passer sammen.
+- Delmål i øvelsen: implementer først GET, derefter POST, PATCH og DELETE i React, verificer i database og UI, og sammenlign til sidst med repositoryets løsning.
 
 </details>
 
