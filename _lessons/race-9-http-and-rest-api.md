@@ -7,7 +7,6 @@ Vi bygger videre på Supabase, CRUD og REST fra sidst, hvor I allerede har opret
 ## Forberedelse
 
 - Du skal have færdiggjort: [Kom i gang med Supabase (products)](https://race.notion.site/Kom-igang-med-Supabase-products-30bbc239db118040b60ec546849ed144) og meget gerne også [Kom i gang med Supabase (Users)](https://github.com/cederdorff/react-supabase-users/blob/main/README.md). Hvis du allerede har et Supabase-projekt, kan du bruge det og sprint til opgave 1.
-- Læs artiklen [What Is CRUD? Explained](https://www.codecademy.com/article/what-is-crud-explained).
 
 Supplerende artikler (ikke obligatorisk):
 
@@ -15,6 +14,10 @@ Supplerende artikler (ikke obligatorisk):
 - Sektionen med Fetch: [The Valley of Code - Fetch](https://thevalleyofcode.com/lesson/fetch/)
 
 ## Agenda
+
+> I skal arbejde med agendaen slavisk og bruge den som jeres faste arbejdsguide gennem hele dagen.
+> Det er en fordel at arbejde sammen to og to eller i små grupper, så I kan sparre undervejs.
+> Lokalet er ledigt, så I har god mulighed for at sidde og arbejde fokuseret med opgaverne.
 
 <details>
 	<summary><strong>1. Opsamling fra sidst</strong></summary>
@@ -52,51 +55,22 @@ Supplerende artikler (ikke obligatorisk):
 <details>
 	<summary><strong>4. CRUD koblet til HTTP i Supabase</strong></summary>
 
+- Start med at skimme artiklen [What Is CRUD? Explained](https://www.codecademy.com/article/what-is-crud-explained).
+- Skriv kort med egne ord, hvad CRUD betyder.
+- Forklar, hvordan CRUD hænger sammen med HTTP-metoder og REST.
 - Lav en oversigt, hvor CRUD kobles til de rigtige HTTP-metoder.
-- Brug `products`-endpointet til at skrive konkrete eksempler på Create, Read, Update og Delete.
-- Noter for hvert eksempel hvilke headers, hvilken payload og hvilken type response der hører til.
+- Brug konkrete eksempler fra Thunder Client og jeres `products`-endpoint på Create, Read, Update og Delete.
+- Noter de særlige ting, I skal skrive for hvert eksempel: endpoint, method, headers, payload, statuskode, response og hvad der ændrer sig i databasen.
 
 </details>
 
 <details>
-	<summary><strong>5. Analyse af API-kald i Thunder Client</strong></summary>
+	<summary><strong>5. Øvelse: Fra API-kald i Thunder Client til React App</strong></summary>
 
-- Gennemgå jeres egne GET, POST, PATCH og DELETE-kald i Thunder Client.
-- Dokumenter for hvert kald: hvad blev sendt, hvad kom tilbage, og hvad skete der i databasen?
-- Noter også, hvis noget overraskede, eller hvis der var noget, der var uklart.
-
-</details>
-
-<details>
-	<summary><strong>6. Fejl og API-svar</strong></summary>
-
-- Prøv bevidst at lave en eller to fejl i Thunder Client, fx forkert endpoint eller manglende headers.
-- Læs fejlbeskederne i response og skriv, hvad fejlen fortæller.
-- Brug en fast tjekliste: method, URL, headers, body og statuskode.
-
-</details>
-
-<details>
-	<summary><strong>7. Introduktion til fetch</strong></summary>
-
-- Tager udgangspunkt i fetch, som allerede er kendt fra tidligere JSON-kald.
-- Sammenligner i kode fetch-kald mod lokal JSON med fetch-kald mod Supabase.
-
-</details>
-
-<details>
-	<summary><strong>8. Fra fetch til React: GET</strong></summary>
-
-- Implementerer GET i React med `fetch()`.
-- Får data fra Supabase vist i UI.
-
-</details>
-
-<details>
-	<summary><strong>9. Fra fetch til React: POST og dagens slutmål</strong></summary>
-
-- Starter på POST fra React til Supabase.
-- Afslutter dagen med at være i gang med både GET og POST fra React til Supabase.
+- Vi starter React-delen her og arbejder med GET, POST, PATCH og DELETE.
+- Brug øvelsen i [\_lessons/race-9-oevelse-thunderclient-til-react.md](_lessons/race-9-oevelse-thunderclient-til-react.md).
+- Målet er at oversætte jeres API-kald fra Thunder Client til kode i React, så flowet bliver det samme.
+- Delmål i øvelsen: implementer GET, POST, PATCH og DELETE i React, verificer i database og UI, og at det passer sammen.
 
 </details>
 
@@ -104,12 +78,12 @@ Supplerende artikler (ikke obligatorisk):
 
 ### Slides
 
-- HTTP & REST API: slides vil blive tilgængelige her
+- API & REST slides (støtte): [https://cederdorff.com/race/slides/api-and-rest.pdf](https://cederdorff.com/race/slides/api-and-rest.pdf)
+- Brug især slide 63-110 som støtte til dagens arbejde.
 
 ### Opgaver
 
-- README-opgaven i dette repository
-- Thunder Client-opgaver med GET, POST, PATCH og DELETE
+- [Øvelse: Fra Thunder Client til React](_lessons/race-9-oevelse-thunderclient-til-react.md)
 
 ### GitHub-projekter
 
