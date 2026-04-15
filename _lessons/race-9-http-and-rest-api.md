@@ -69,6 +69,7 @@ Supplerende artikler (ikke obligatorisk):
 
 - Vi starter React-delen her og arbejder med GET, POST, PATCH og DELETE.
 - Brug øvelsen [Fra Thunder Client til React](/_exercises/race-9-oevelse-thunderclient-til-react.md).
+- Startprojekt: [react-supabase-products-template](https://github.com/cederdorff/react-supabase-products-template).
 - Målet er at oversætte jeres API-kald fra Thunder Client til kode i React, så flowet bliver det samme.
 - Delmål i øvelsen: implementer først GET, derefter POST, PATCH og DELETE i React, verificer i database og UI, og sammenlign til sidst med repositoryets løsning.
 
@@ -87,7 +88,7 @@ Supplerende artikler (ikke obligatorisk):
 
 ### GitHub-projekter
 
-- Kommer snart
+- Starter template: [react-supabase-products-template](https://github.com/cederdorff/react-supabase-products-template)
 
 ### Links
 
