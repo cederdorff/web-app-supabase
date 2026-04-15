@@ -1,18 +1,18 @@
-# RACE 9 - Oevelse: Fra Thunder Client til React
+# RACE 9 - Øvelse: Fra Thunder Client til React
 
-## Formaal
+## Formål
 
-I denne oevlelse skal I oversaette jeres API-kald fra Thunder Client til React med fetch. I skal implementere GET, POST, PATCH og DELETE mod Supabase, og I skal dokumentere hvad der sker i hvert kald.
+I denne øvelse skal I oversætte jeres API-kald fra Thunder Client til React med fetch. I skal implementere GET, POST, PATCH og DELETE mod Supabase, og I skal dokumentere, hvad der sker i hvert kald.
 
-Maalet er, at I ender med en loesning, der matcher repositoryets loesning i struktur og adfaerd.
+Målet er, at I ender med en løsning, der matcher repositoryets løsning i struktur og adfærd.
 
 ## Arbejdsform
 
-- Foelg trin-for-trin i den raekkefolge, de staar her.
-- Arbejd gerne to og to eller i smaa grupper.
+- Følg trin-for-trin i den rækkefølge, de står her.
+- Arbejd gerne to og to eller i små grupper.
 - Brug jeres egne kald fra Thunder Client som reference, mens I skriver React-koden.
 
-## Trin 1: Vaelg jeres reference-kald
+## Trin 1: Vælg jeres reference-kald
 
 - Find et fungerende GET-kald i Thunder Client.
 - Find et fungerende POST-kald i Thunder Client.
@@ -23,7 +23,7 @@ Maalet er, at I ender med en loesning, der matcher repositoryets loesning i stru
 ## Trin 2: Implementer GET i React
 
 - Lav et fetch-kald, der henter products fra Supabase.
-- Giv de noedvendige headers med.
+- Giv de nødvendige headers med.
 - Vis data i UI.
 - Sammenlign React-request med Thunder Client-request.
 
@@ -36,23 +36,23 @@ Maalet er, at I ender med en loesning, der matcher repositoryets loesning i stru
 
 ## Trin 4: Implementer PATCH i React
 
-- Vaelg et product der skal opdateres.
-- Send kun de felter, der skal aendres.
+- Vælg et product der skal opdateres.
+- Send kun de felter, der skal ændres.
 - Opdater UI efter succesfuld opdatering.
 - Sammenlign med PATCH-kaldet fra Thunder Client.
 
 ## Trin 5: Implementer DELETE i React
 
-- Vaelg et product der skal slettes.
-- Send DELETE med korrekt endpoint og noedvendige headers.
+- Vælg et product der skal slettes.
+- Send DELETE med korrekt endpoint og nødvendige headers.
 - Fjern elementet fra UI efter succesfuld response.
 - Sammenlign med DELETE-kaldet fra Thunder Client.
 
-## Trin 6: Sammenlign med repository-loesningen
+## Trin 6: Sammenlign med repository-løsningen
 
-- Sammenlign jeres GET, POST, PATCH og DELETE med loesningen i projektet.
-- Noter forskelle i endpoint, headers, payload, state-opdatering og fejlhaandtering.
-- Ret til, saa jeres implementation fungerer stabilt i praksis.
+- Sammenlign jeres GET, POST, PATCH og DELETE med løsningen i projektet.
+- Noter forskelle i endpoint, headers, payload, state-opdatering og fejlhåndtering.
+- Ret til, så jeres implementation fungerer stabilt i praksis.
 
 ## Det skal I skrive ned for hvert kald
 
@@ -62,7 +62,7 @@ Skriv disse punkter for GET, POST, PATCH og DELETE:
 - Hvilket endpoint bruger I?
 - Hvilke headers sender I?
 - Hvilken payload sender I (hvis relevant)?
-- Hvilken statuskode faar I tilbage?
+- Hvilken statuskode får I tilbage?
 - Hvad indeholder response?
 - Hvad sker der i databasen?
 - Hvad sker der i UI?
@@ -70,7 +70,7 @@ Skriv disse punkter for GET, POST, PATCH og DELETE:
 
 ## Fast fejl-tjekliste
 
-Hvis noget ikke virker, tjek i denne raekkefolge:
+Hvis noget ikke virker, tjek i denne rækkefølge:
 
 1. Method
 2. URL/endpoint
@@ -78,5 +78,5 @@ Hvis noget ikke virker, tjek i denne raekkefolge:
 4. Body/payload
 5. Statuskode
 6. Response-fejlbesked
-7. Om data faktisk er aendret i databasen
+7. Om data faktisk er ændret i databasen
 8. Om state/UI bliver opdateret korrekt
