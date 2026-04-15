@@ -11,15 +11,18 @@ export default function UpdatePage() {
     image: "",
   };
 
-  async function handleSubmit() {
-    // TODO: Implement PATCH with fetch.
+  async function handleSubmit(productData) {
+    console.log("UpdatePage productData:", productData);
+    // TODO (Trin 4): Implementer PATCH med fetch til `${URL}?id=eq.${id}`.
     navigate(`/products/${id}`);
   }
 
   return (
     <main className="app">
       <h1 className="page-title">Update Product</h1>
-      <p className="status-msg">TODO: Implement GET for prefilled form data.</p>
+      <p className="status-msg">
+        TODO (Trin 4): Implementer GET til prefill af form data.
+      </p>
       <ProductForm onSubmit={handleSubmit} productToUpdate={product} />
     </main>
   );

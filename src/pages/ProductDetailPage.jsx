@@ -13,7 +13,7 @@ export default function ProductDetailPage() {
   async function handleDelete() {
     const confirmed = window.confirm("Delete this product?");
     if (confirmed) {
-      // TODO: Implement DELETE with fetch.
+      // TODO (Trin 5): Implementer DELETE med fetch til `${URL}?id=eq.${id}`.
       navigate("/");
     }
   }
@@ -22,7 +22,7 @@ export default function ProductDetailPage() {
     <main className="app">
       <h1 className="page-title">Product Details</h1>
       <p className="status-msg">
-        TODO: Implement GET product details with fetch.
+        TODO (Trin 5): Implementer GET af product details med fetch.
       </p>
 
       <article className="product-detail">
