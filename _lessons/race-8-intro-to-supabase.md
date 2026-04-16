@@ -72,7 +72,7 @@ I dag introducerer vi web app som begreb og sætter det i perspektiv til det, vi
 ### Opgaver
 
 - [Kom i gang med Supabase (products)](https://race.notion.site/Kom-igang-med-Supabase-products-30bbc239db118040b60ec546849ed144)
-- [Kom i gang med Supabase (Users)](https://github.com/cederdorff/react-supabase-users/blob/main/README.md) (Hvis du allerede har et Supabase-projekt, kan du bruge det og sprint til opgave 1).
+- [Kom i gang med Supabase (Users)](https://github.com/cederdorff/react-supabase-users/blob/main/README.md) (Hvis du allerede har et Supabase-projekt, kan du bruge det og springe til opgave 1).
 
 ### GitHub-projekter
 
