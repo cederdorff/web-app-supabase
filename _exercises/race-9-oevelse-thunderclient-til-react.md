@@ -12,6 +12,14 @@ Målet er, at I ender med en fuld CRUD app for products.
 - Arbejd gerne to og to eller i små grupper, men kod selv.
 - Brug jeres egne kald fra Thunder Client som reference, mens I skriver React-koden.
 
+## Forberedelse (vigtig!)
+
+**Du skal have færdiggjort denne opgave fra tidligere undervisning:** [Kom i gang med Supabase (products)](https://race.notion.site/Kom-igang-med-Supabase-products-30bbc239db118040b60ec546849ed144)
+
+Grunden: I den opgave sætter I Supabase op, opretter `products`-tabel, og tester API-kaldet i Thunder Client. Du skal have fungerende GET, POST, PATCH og DELETE-kald fra Thunder Client før du starter denne øvelse her.
+
+Hvis du allerede har et Supabase-projekt med en `products`-tabel og har testet API-kald i Thunder Client, kan du springe direkte til Trin 0 her.
+
 ## Trin 0: Startprojekt
 
 - Brug dette template: [react-supabase-products-template](https://github.com/cederdorff/react-supabase-products-template).
