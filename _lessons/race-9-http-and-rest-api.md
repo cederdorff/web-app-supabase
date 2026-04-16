@@ -2,11 +2,12 @@
 
 ## Formål
 
-Vi bygger videre på Supabase, CRUD og REST fra sidst, hvor I allerede har oprettet et Supabase-projekt og testet API-kald i Thunder Client. Nu går vi i dybden med HTTP og REST, så I forstår, hvad der faktisk sker i request/response-flowet, hvorfor metoderne betyder noget, og hvordan vi bruger den forståelse, når vi flytter requests ind i React med `fetch()`.
+I RACE 8 satte vi Supabase op, oprettede en `products`-tabel og testede REST API'et i browseren og Thunder Client. Nu bygger vi direkte videre på det: vi går i dybden med HTTP og REST, så I forstår hvad der faktisk sker i request/response-flowet, hvorfor metoderne betyder noget, og hvad det vil sige at arbejde med et REST API. Dagen afsluttes med at flytte jeres Thunder Client-kald ind i React med `fetch()`, så I kan bygge en rigtig web app.
 
 ## Forberedelse
 
-- Du skal have færdiggjort: [Kom i gang med Supabase (products)](https://race.notion.site/Kom-igang-med-Supabase-products-30bbc239db118040b60ec546849ed144) og meget gerne også [Kom i gang med Supabase (Users)](https://github.com/cederdorff/react-supabase-users/blob/main/README.md). Hvis du allerede har et Supabase-projekt, kan du bruge det og sprint til opgave 1.
+- Du skal have færdiggjort opgaven fra [RACE 8 – Intro to Supabase](./race-8-intro-to-supabase.md): [Kom i gang med Supabase (products)](https://race.notion.site/Kom-igang-med-Supabase-products-30bbc239db118040b60ec546849ed144). Den opgave sætter Supabase op, opretter `products`-tabel og tester REST API'et i Thunder Client – det er præcis det udgangspunkt vi bruger i dag.
+- Du skal meget gerne også have lavet [Kom i gang med Supabase (Users)](https://github.com/cederdorff/react-supabase-users/blob/main/README.md). Hvis du allerede har et Supabase-projekt kørende, kan du sprint til opgave 1.
 
 Supplerende artikler (ikke obligatorisk):
 

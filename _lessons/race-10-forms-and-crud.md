@@ -6,29 +6,113 @@ Vi skal bygge en React-app, der kan læse og ændre data i Supabase. Fokus er p�
 
 ## Forberedelse
 
-- Du skal sikre dig, at basisprojektet kører lokalt.
-- Du skal have dit Supabase-projekt og dine API-oplysninger klar.
-- Du skal læse eller gennemgå den del af projektet, der handler om komponenter, sider og formularer.
-- Du skal genopfriske `useState`, props og controlled components.
-- Du skal have dine tidligere eksempler på GET, POST, PATCH og DELETE klar.
+- Du skal have færdiggjort: [RACE 9 – HTTP & REST API](./race-9-http-and-rest-api.md) og øvelsen [Fra Thunder Client til React](../_exercises/race-9-oevelse-thunderclient-til-react.md).
+- Genopfrisk de første 4 artikler i sektionen [React State – The Valley of Code](https://thevalleyofcode.com/lesson/react-state/):
+  1. [Introduction](https://thevalleyofcode.com/lesson/react-state/)
+  2. [Managing state](https://thevalleyofcode.com/lesson/react-state/managing-state/)
+  3. [Component props](https://thevalleyofcode.com/lesson/react-state/component-props/)
+  4. [Data flow](https://thevalleyofcode.com/lesson/react-state/data-flow/)
+- Læs alle 6 artikler i sektionen [React Forms – The Valley of Code](https://thevalleyofcode.com/lesson/react-forms/):
+  1. [Introduction](https://thevalleyofcode.com/lesson/react-forms/)
+  2. [Managing forms in React](https://thevalleyofcode.com/lesson/react-forms/managing-forms-in-react/)
+  3. [Form Actions](https://thevalleyofcode.com/lesson/react-forms/form-actions/)
+  4. [React, how to make a checked checkbox editable](https://thevalleyofcode.com/lesson/react-forms/react-checkbox-editable/)
+  5. [How I fixed an issue with a React login form state and Browser autofill](https://thevalleyofcode.com/lesson/react-forms/react-form-browser-autofill/)
+  6. [How to get the value of an input element in React](https://thevalleyofcode.com/lesson/react-forms/react-how-to-get-value-input/)
 
 ## Agenda
 
-1. Vi repeterer kort HTTP-metoderne fra sidst.
-2. Vi gennemgår projektets komponenter og sider.
-3. Vi implementerer READ i React og viser data i UI.
-4. Vi gennemgår forms i React med state og controlled inputs.
-5. Vi implementerer CREATE fra en formular.
-6. Vi implementerer UPDATE via en redigeringsformular.
-7. Vi implementerer DELETE og opdaterer UI efter sletning.
-8. Vi taler om loading, fejlbeskeder og hvorfor UI skal holdes synkroniseret med databasen.
-9. Vi samler op på, hvordan CRUD hænger sammen i en web app.
+<details>
+	<summary><strong>1. Opsamling fra RACE 9</strong></summary>
+
+- Vi repeterer kort, hvad I gjorde i RACE 9 med HTTP-metoderne og Thunder Client.
+- Vi gennemgår øvelsen "Fra Thunder Client til React" i fællesskab – kigger på, hvordan GET, POST, PATCH og DELETE blev implementeret med `fetch` i React.
+- Vi sammenligner jeres løsninger og taler om forskelle, ligheder og fejl I mødte undervejs.
+- Vi gennemgår jeres refleksionssvar fra Trin 6 i RACE 9-øvelsen.
+- Vi sikrer os, at alle har en fungerende løsning som udgangspunkt for i dag.
+
+</details>
+
+<details>
+	<summary><strong>2. Repetition: REST, HTTP, CRUD, Supabase og BaaS</strong></summary>
+
+- Vi repeterer de centrale begreber fra RACE 8 og RACE 9: hvad er HTTP, REST, CRUD, Supabase og BaaS?
+- Vi gennemgår kort, hvad der sker i et request/response-flow fra React til Supabase og tilbage.
+- Vi taler om, hvordan GET, POST, PATCH og DELETE mapper til Create, Read, Update og Delete.
+- Vi sikrer os, at alle har et fælles fundament at bygge dagens kode på.
+
+</details>
+
+<details>
+	<summary><strong>3. Projektets komponenter og sider</strong></summary>
+
+- Vi gennemgår struktur i `src/pages` (HomePage, CreatePage, UpdatePage, ProductDetailPage).
+- Vi gennemgår struktur i `src/components` (Header, ProductCard, ProductForm).
+- Vi diskuterer, hvordan komponenter og sider snakker sammen.
+- Vi tegner komponenthierarkiet på tavlen.
+
+</details>
+
+<details>
+	<summary><strong>4. Forms i React – state og controlled inputs</strong></summary>
+
+- Vi taler om controlled components og hvorfor det er det rigtige mønster i React.
+- Vi demonstrerer, hvordan man bruger `useState` til form fields.
+- Vi viser, hvordan man binder input-værdier til state og state til input-værdier.
+- Vi taler om `onSubmit`, `event.preventDefault()` og how to send form data med `fetch`.
+
+</details>
+
+<details>
+	<summary><strong>5. Øvelse: Byg en Post App med fuld CRUD</strong></summary>
+
+- I skal bygge en Post App, hvor brugere kan oprette, læse, redigere og slette indlæg gemt i Supabase.
+- Opret en `posts`-tabel i jeres Supabase-projekt med mindst felterne `title` og `body`.
+- Byg en React-app med følgende sider og funktionalitet:
+  - **HomePage**: hent og vis alle posts med GET
+  - **CreatePage**: opret et nyt post med POST via en formular
+  - **UpdatePage**: hent ét post og rediger det med PATCH via en formular
+  - **PostDetailPage**: vis ét post og slet det med DELETE
+- Brug `useState`, `useEffect` og `fetch` med URL og APIKEY fra `.env`.
+- Brug controlled components til alle formularfelter.
+- Navigér korrekt efter CREATE, UPDATE og DELETE.
+
+</details>
+
+<details>
+	<summary><strong>6. Opsamling og best practices</strong></summary>
+
+- Vi taler om, hvordan man holder UI synkroniseret med databasen.
+- Vi diskuterer loading states, error handling og user feedback.
+- Vi samler op på CRUD-flowet i sin helhed.
+- Vi reflekterer over, hvad I har lært denne dag, og hvordan det bruges i rigtige web apps.
+
+</details>
 
 ## Materialer
 
-- React-projektet i dette repository.
-- Supabase endpoint og API key.
-- Computer med adgang til projektet.
-- Eksempler på `fetch()` til CRUD.
-- Tavleskitse over flowet UI -> request -> Supabase -> response -> state update.
-- Eventuelt et lille ark med React form-mønstre.
+### Slides
+
+- Forms & CRUD slides (støtte): [https://cederdorff.com/race/slides/forms-and-crud.pdf](https://cederdorff.com/race/slides/forms-and-crud.pdf)
+- Brug slides som støtte gennem dagens arbejde.
+
+### Opgaver
+
+- React-projektet fra RACE 9 (starter-template branch)
+- Implementer READ, CREATE, UPDATE og DELETE i jeres app
+
+### GitHub-projekter
+
+- Starter template (fra RACE 9): [react-supabase-products-template](https://github.com/cederdorff/react-supabase-products-template)
+- Jeres egen fork/klone af templaten
+
+### Links
+
+- [The Valley of Code – React Forms (intro)](https://thevalleyofcode.com/lesson/react-forms/)
+- [Managing forms in React](https://thevalleyofcode.com/lesson/react-forms/managing-forms-in-react/)
+- [Form Actions (React 19)](https://thevalleyofcode.com/lesson/react-forms/form-actions/)
+- [How to get the value of an input element in React](https://thevalleyofcode.com/lesson/react-forms/react-how-to-get-value-input/)
+- [React – UseState Hook](https://react.dev/reference/react/useState)
+- [React – UseEffect Hook](https://react.dev/reference/react/useEffect)
+- [MDN – Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [React – Handling Events](https://react.dev/learn/responding-to-events)
