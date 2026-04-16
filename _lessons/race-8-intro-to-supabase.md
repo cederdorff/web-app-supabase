@@ -66,8 +66,8 @@ I dag introducerer vi web app som begreb og sætter det i perspektiv til det, vi
 
 ### Slides
 
-- Web App vs Website: slides vil blive tilgængelige her
-- [Supabase – Introduktionsslides](https://cederdorff.com/race/slides/supabase.pdf)
+- [Web App vs Website]()
+- [Supabase – Introduktionsslides](https://cederdorff.com/race/slides/web-app.pdf)
 
 ### Opgaver
 
