@@ -2,7 +2,7 @@
 
 ## Formål
 
-Vi skal bygge en React-app, der kan læse og ændre data i Supabase. Fokus er på forms, state, controlled components og komplette CRUD-flows i en rigtig web app.
+Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på forms, state, controlled components og komplette CRUD-flows i en rigtig web app.
 
 ## Forberedelse
 
@@ -44,22 +44,23 @@ Vi skal bygge en React-app, der kan læse og ændre data i Supabase. Fokus er p�
 </details>
 
 <details>
-	<summary><strong>3. Projektets komponenter og sider</strong></summary>
+	<summary><strong>3. Post App med fuld CRUD</strong></summary>
 
-- Vi gennemgår struktur i `src/pages` (HomePage, CreatePage, UpdatePage, ProductDetailPage).
-- Vi gennemgår struktur i `src/components` (Header, ProductCard, ProductForm).
-- Vi diskuterer, hvordan komponenter og sider snakker sammen.
-- Vi tegner komponenthierarkiet på tavlen.
+- Vi introducerer Post App: en simpel app hvor brugere kan oprette, læse, redigere og slette indlæg.
+- Vi gennemgår den struktur vi skal bygge: sider (HomePage, CreatePage, UpdatePage, PostDetailPage) og komponenter.
+- Vi tegner komponenthierarkiet og data-flowet på tavlen.
+- Vi opretter `posts`-tabellen i Supabase med felterne `id`, `title` og `body`.
+- Vi tester endpointet i Thunder Client før vi går i gang med React.
 
 </details>
 
 <details>
-	<summary><strong>4. Forms i React – state og controlled inputs</strong></summary>
+	<summary><strong>4. Forms i React – teori og live demo</strong></summary>
 
 - Vi taler om controlled components og hvorfor det er det rigtige mønster i React.
-- Vi demonstrerer, hvordan man bruger `useState` til form fields.
-- Vi viser, hvordan man binder input-værdier til state og state til input-værdier.
-- Vi taler om `onSubmit`, `event.preventDefault()` og how to send form data med `fetch`.
+- Vi demonstrerer, hvordan man bruger `useState` til form fields med `onChange` og `value`.
+- Vi viser `onSubmit` og `event.preventDefault()` og hvordan form data sendes med `fetch`.
+- Vi bygger GET i fællesskab live: henter alle posts og viser dem i HomePage med `useEffect` og `useState`.
 
 </details>
 
@@ -98,19 +99,26 @@ Vi skal bygge en React-app, der kan læse og ændre data i Supabase. Fokus er p�
 
 ### Opgaver
 
-- React-projektet fra RACE 9 (starter-template branch)
-- Implementer READ, CREATE, UPDATE og DELETE i jeres app
+- Byg en Post App med `posts`-tabel i Supabase
+- Implementer READ, CREATE, UPDATE og DELETE i React med `fetch`
+- Brug controlled components til CREATE- og UPDATE-formularer
 
 ### GitHub-projekter
 
-- Starter template (fra RACE 9): [react-supabase-products-template](https://github.com/cederdorff/react-supabase-products-template)
-- Jeres egen fork/klone af templaten
+- Jeres eget repository med Post App-løsning
+- (Valgfri reference) Starter template fra RACE 9: [react-supabase-products-template](https://github.com/cederdorff/react-supabase-products-template)
 
 ### Links
 
+- [React State – Introduction](https://thevalleyofcode.com/lesson/react-state/)
+- [Managing state](https://thevalleyofcode.com/lesson/react-state/managing-state/)
+- [Component props](https://thevalleyofcode.com/lesson/react-state/component-props/)
+- [Data flow](https://thevalleyofcode.com/lesson/react-state/data-flow/)
 - [The Valley of Code – React Forms (intro)](https://thevalleyofcode.com/lesson/react-forms/)
 - [Managing forms in React](https://thevalleyofcode.com/lesson/react-forms/managing-forms-in-react/)
 - [Form Actions (React 19)](https://thevalleyofcode.com/lesson/react-forms/form-actions/)
+- [React, how to make a checked checkbox editable](https://thevalleyofcode.com/lesson/react-forms/react-checkbox-editable/)
+- [How I fixed an issue with a React login form state and Browser autofill](https://thevalleyofcode.com/lesson/react-forms/react-form-browser-autofill/)
 - [How to get the value of an input element in React](https://thevalleyofcode.com/lesson/react-forms/react-how-to-get-value-input/)
 - [React – UseState Hook](https://react.dev/reference/react/useState)
 - [React – UseEffect Hook](https://react.dev/reference/react/useEffect)
