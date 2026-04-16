@@ -94,8 +94,7 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 
 ### Slides
 
-- Forms & CRUD slides (støtte): [https://cederdorff.com/race/slides/forms-and-crud.pdf](https://cederdorff.com/race/slides/forms-and-crud.pdf)
-- Brug slides som støtte gennem dagens arbejde.
+- Kommer her
 
 ### Opgaver
 
@@ -105,8 +104,7 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 
 ### GitHub-projekter
 
-- Jeres eget repository med Post App-løsning
-- (Valgfri reference) Starter template fra RACE 9: [react-supabase-products-template](https://github.com/cederdorff/react-supabase-products-template)
+- Kommer her
 
 ### Links
 
