@@ -31,6 +31,20 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 - Vi gennemgår jeres refleksionssvar fra Trin 6 i RACE 9-øvelsen.
 - Vi sikrer os, at alle har en fungerende løsning som udgangspunkt for i dag.
 
+---
+
+**Peer Review & Refleksion (makkerøvelse)**
+
+1. Sæt jer sammen to og to og byt kode.
+2. Gennemgå koden én CRUD-funktion ad gangen:
+   - Start med READ, så CREATE, UPDATE og DELETE.
+   - Forklar kort for hinanden, hvordan hver del virker.
+   - Notér sammen:
+     - Hvad var svært?
+     - Hvad er uklart?
+     - Hvordan kan I bruge det, I har lært, fremadrettet – fx i jeres web app-eksamensprojekt?
+3. Del jeres vigtigste pointer i plenum.
+
 </details>
 
 <details>
