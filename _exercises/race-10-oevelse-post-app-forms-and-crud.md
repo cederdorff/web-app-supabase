@@ -271,7 +271,7 @@ I skal:
 4. Navigere tilbage til `/` ved succes
 5. Teste at et nyt post bliver gemt i databasen
 
-Tænk flowet sådan her:
+Kort flow:
 
 1. Brugeren udfylder formularen i `PostForm`
 2. `PostForm` kalder `onSubmit({ image, caption })`
@@ -279,7 +279,7 @@ Tænk flowet sådan her:
 4. `handleSubmit` sender data videre med `fetch`
 5. Ved succes navigerer appen tilbage til forsiden
 
-Det vigtige her er, at:
+Det vigtige her er:
 
 - `PostForm` står for formularen
 - `CreatePage` står for POST-requesten
@@ -306,7 +306,7 @@ async function handleSubmit(postData) {
 
 Mål: Hent ét post og brug det som startdata i formularen.
 
-Tænk flowet sådan her:
+Kort flow:
 
 1. Brugeren klikker på edit på detail-siden
 2. Appen navigerer til `"/posts/:id/update"`
@@ -338,14 +338,11 @@ Det vigtige her er:
 - at I sender PATCH til det rigtige post med querystring
 - at formularen får data ind som props fra `UpdatePage`
 
-Her er det smarte ved genbrug:
+Det er smart, at samme `PostForm` kan bruges igen:
 
-- `PostForm` viser allerede felter for `image` og `caption`
 - i `CreatePage` bruges formularen uden eksisterende data
 - i `UpdatePage` sendes et eksisterende `post` ind som prop
 - derfor kan formularen vise de gamle værdier først og derefter lade brugeren redigere dem
-
-Det er netop derfor, det giver mening at bruge samme `PostForm` til både create og update.
 
 Spørgsmål:
 
@@ -382,16 +379,7 @@ async function handleSubmit(postData) {
 
 Mål: Vis ét post og gør det muligt at slette det.
 
-I skal:
-
-1. Hente ét post med GET
-2. Vise billedet og caption
-3. Lave en delete-knap
-4. Spørge brugeren med `window.confirm(...)`
-5. Sende DELETE-request
-6. Navigere tilbage til forsiden ved succes
-
-Tænk flowet sådan her:
+Kort flow:
 
 1. Brugeren klikker på et post på forsiden
 2. Appen navigerer til `"/posts/:id"`
@@ -402,18 +390,22 @@ Tænk flowet sådan her:
 7. Ved bekræftelse sendes DELETE-requesten
 8. Ved succes navigerer appen tilbage til forsiden
 
+I skal:
+
+1. Hente ét post med GET
+2. Vise billedet og caption
+3. Lave en delete-knap
+4. Spørge brugeren med `window.confirm(...)`
+5. Sende DELETE-request
+6. Navigere tilbage til forsiden ved succes
+
 Det vigtige her er:
 
 - at I genbruger `id` fra URL'en
 - at GET og DELETE begge rammer det samme post
 - at I først sletter, når brugeren har bekræftet
 
-Her er det smarte ved flowet:
-
-- detail-siden viser ét konkret post ud fra `id` i URL'en
-- det samme `id` bruges både til GET og DELETE
-- derfor hænger visning og sletning tæt sammen i samme komponent
-- det gør det lettere at forstå, hvilket post der bliver vist og hvilket post der bliver slettet
+Det smarte her er, at detail-siden både viser og sletter det samme post ud fra samme `id`.
 
 <details>
 <summary>Vejledende løsning</summary>
@@ -456,6 +448,215 @@ Når jeres CRUD-flow og forms virker, kan I lægge det næste lag ovenpå:
 - simple fejlbeskeder
 - `response.ok` checks
 - disable af knapper mens requests kører
+
+I behøver ikke gøre det hele på én gang. Tag ét punkt ad gangen.
+
+### 9.1 Simpel validering i formularen
+
+Start med noget meget enkelt.
+
+Forslag:
+
+- tjek om `caption` er tom
+- stop submit hvis feltet er tomt
+- vis en kort fejltekst under feltet
+
+Det kræver, at I selv tilføjer lidt ny state i `PostForm`, fx en `captionError`.
+
+Spørg jer selv:
+
+- Hvad skal være udfyldt for at et post giver mening?
+- Hvad er den simpleste validering, der hjælper brugeren?
+
+<details>
+<summary>Vejledende løsning</summary>
+
+```jsx
+const [captionError, setCaptionError] = useState("");
+
+if (!caption.trim()) {
+  setCaptionError("Caption is required.");
+  return;
+}
+```
+
+</details>
+
+### 9.2 Loading states
+
+Når appen henter eller gemmer data, er det rart at vise, at noget er i gang.
+
+Forslag:
+
+- brug `isLoading` i sider der henter data
+- brug `isSubmitting` i create/update
+- brug `isDeleting` i detail-siden
+
+Eksempler:
+
+- `"Loading posts..."`
+- `"Loading post..."`
+- `"Saving..."`
+- `"Deleting..."`
+
+<details>
+<summary>Vejledende løsning</summary>
+
+```jsx
+const [isLoading, setIsLoading] = useState(false);
+
+setIsLoading(true);
+
+// fetch ...
+
+setIsLoading(false);
+```
+
+</details>
+
+### 9.3 Tom-state på forsiden
+
+Hvis der ikke er nogen posts endnu, skal forsiden stadig give mening.
+
+Forslag:
+
+- vis en besked når `posts.length === 0`
+- forklar kort hvad brugeren kan gøre nu
+
+Eksempel:
+
+- `"No posts yet"`
+- `"Create your first post to get started."`
+
+<details>
+<summary>Vejledende løsning</summary>
+
+```jsx
+{!isLoading && !errorMessage && posts.length === 0 && (
+  <section className="empty-state">
+    <h2>No posts yet</h2>
+    <p>Create your first post to get started.</p>
+  </section>
+)}
+```
+
+</details>
+
+### 9.4 `try/catch`
+
+Når I bruger `fetch`, kan noget gå galt. Derfor giver det mening at pakke jeres requests ind i `try/catch`.
+
+Forslag:
+
+```jsx
+try {
+  // fetch-kode
+} catch (error) {
+  // sæt fejlbesked i state
+}
+```
+
+Start med at tilføje `try/catch` i:
+
+- `HomePage`
+- `CreatePage`
+- `UpdatePage`
+- `PostDetailPage`
+
+<details>
+<summary>Vejledende løsning</summary>
+
+```jsx
+try {
+  const response = await fetch(URL, { headers });
+  const data = await response.json();
+  setPosts(data);
+} catch (error) {
+  setErrorMessage("Could not load posts.");
+}
+```
+
+</details>
+
+### 9.5 Simple fejlbeskeder
+
+Når noget går galt, skal brugeren have en kort besked.
+
+Forslag:
+
+- lav en `errorMessage` state
+- vis beskeden i UI hvis der er en fejl
+
+Eksempler:
+
+- `"Could not load posts."`
+- `"Could not create post."`
+- `"Could not update post."`
+- `"Could not delete post."`
+
+Målet er ikke perfekte beskeder. Målet er bare, at brugeren ikke står uden feedback.
+
+<details>
+<summary>Vejledende løsning</summary>
+
+```jsx
+const [errorMessage, setErrorMessage] = useState("");
+
+{errorMessage && <p className="status-banner status-banner-error">{errorMessage}</p>}
+```
+
+</details>
+
+### 9.6 `response.ok`
+
+Selv hvis `fetch` lykkes teknisk, kan serveren stadig svare med en fejlstatus.
+
+Derfor kan I tjekke:
+
+```jsx
+if (!response.ok) {
+  throw new Error("Could not load posts.");
+}
+```
+
+Det gør jeres fejlflow mere tydeligt og mere robust.
+
+<details>
+<summary>Vejledende løsning</summary>
+
+```jsx
+const response = await fetch(URL, { headers });
+
+if (!response.ok) {
+  throw new Error("Could not load posts.");
+}
+
+const data = await response.json();
+```
+
+</details>
+
+### 9.7 Disable knapper mens requests kører
+
+Når en request er i gang, er det en god ide at disable relevante knapper.
+
+Forslag:
+
+- disable submit-knappen i create/update mens der gemmes
+- disable delete-knappen mens der slettes
+
+Det hjælper med at undgå dobbeltklik og forvirring.
+
+<details>
+<summary>Vejledende løsning</summary>
+
+```jsx
+<button type="submit" disabled={isSubmitting}>
+  {isSubmitting ? "Saving..." : "Create post"}
+</button>
+```
+
+</details>
 
 ## 10. Refleksion
 
