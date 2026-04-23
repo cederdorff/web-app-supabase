@@ -22,7 +22,10 @@ export default function HomePage() {
 
   return (
     <main className="app">
-      <h1 className="page-title">All Posts</h1>
+      <section className="feed-intro">
+        <p className="feed-eyebrow">Post App</p>
+        <h1 className="page-title">Explore the latest posts</h1>
+      </section>
       <section className="post-list">
         {posts.map(post => (
           <PostCard key={post.id} post={post} />

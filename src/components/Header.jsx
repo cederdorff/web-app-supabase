@@ -1,16 +1,16 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 export default function Header() {
   return (
     <header className="site-header">
-      <div className="site-header-inner">
-        <Link to="/" className="site-logo">
-          Post App
-        </Link>
-        <Link to="/create" className="btn btn-primary">
-          + New Post
-        </Link>
-      </div>
+      <nav className="site-nav" aria-label="Main navigation">
+        <NavLink to="/" end className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}>
+          Home
+        </NavLink>
+        <NavLink to="/create" className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}>
+          Create Post
+        </NavLink>
+      </nav>
     </header>
   );
 }

@@ -19,18 +19,18 @@ export default function PostForm({ onSubmit, postToUpdate }) {
   return (
     <form className="post-form" onSubmit={handleSubmit}>
       <div className="form-grid">
-        <div className="form-field" style={{ gridColumn: "1 / -1" }}>
+        <div className="form-field">
           <label htmlFor="image">Image URL</label>
           <input
             id="image"
             name="image"
             placeholder="https://..."
             value={image}
-            onChange={e => setImage(e.target.value)}
+            onChange={(e) => setImage(e.target.value)}
           />
           {image && <img src={image} alt="Preview" className="image-preview" />}
         </div>
-        <div className="form-field" style={{ gridColumn: "1 / -1" }}>
+        <div className="form-field">
           <label htmlFor="caption">Caption *</label>
           <textarea
             id="caption"
@@ -38,13 +38,17 @@ export default function PostForm({ onSubmit, postToUpdate }) {
             rows="4"
             placeholder="Write a caption for your post..."
             value={caption}
-            onChange={e => setCaption(e.target.value)}
+            onChange={(e) => setCaption(e.target.value)}
             required
           />
         </div>
       </div>
       <div className="form-actions">
-        <button type="button" className="btn btn-secondary" onClick={handleCancel}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={handleCancel}
+        >
           Cancel
         </button>
         <button type="submit" className="btn btn-primary">
