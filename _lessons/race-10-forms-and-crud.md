@@ -104,13 +104,12 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 
 ### Opgaver
 
-- Byg en Post App med `posts`-tabel i Supabase
-- Implementer READ, CREATE, UPDATE og DELETE i React med `fetch`
-- Brug controlled components til CREATE- og UPDATE-formularer
+- [Øvelse: Post App - Forms & CRUD](../_exercises/race-10-oevelse-post-app-forms-and-crud.md)
 
 ### GitHub-projekter
 
-- Kommer her
+- [post-app-supabase-template](https://github.com/cederdorff/post-app-supabase-template)
+- [post-app-supabase](https://github.com/cederdorff/post-app-supabase)
 
 ### Links
 
