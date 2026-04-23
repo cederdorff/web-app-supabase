@@ -1,15 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function PostForm({ onSubmit, postToUpdate }) {
+export default function PostForm({ onSubmit, postToUpdate, isSubmitting = false, errorMessage = "" }) {
   const [image, setImage] = useState(postToUpdate?.image || "");
   const [caption, setCaption] = useState(postToUpdate?.caption || "");
+  const [captionError, setCaptionError] = useState("");
 
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    onSubmit({ image, caption });
+
+    const trimmedCaption = caption.trim();
+    const trimmedImage = image.trim();
+
+    if (!trimmedCaption) {
+      setCaptionError("Caption is required.");
+      return;
+    }
+
+    setCaptionError("");
+    await onSubmit({ image: trimmedImage, caption: trimmedCaption });
   }
 
   function handleCancel() {
@@ -38,21 +49,29 @@ export default function PostForm({ onSubmit, postToUpdate }) {
             rows="4"
             placeholder="Write a caption for your post..."
             value={caption}
-            onChange={(e) => setCaption(e.target.value)}
+            onChange={(e) => {
+              setCaption(e.target.value);
+              setCaptionError("");
+            }}
             required
+            className={captionError ? "input-error" : ""}
+            aria-invalid={Boolean(captionError)}
           />
+          {captionError && <p className="form-message form-message-error">{captionError}</p>}
         </div>
       </div>
+      {errorMessage && <p className="form-message form-message-error">{errorMessage}</p>}
       <div className="form-actions">
         <button
           type="button"
           className="btn btn-secondary"
           onClick={handleCancel}
+          disabled={isSubmitting}
         >
           Cancel
         </button>
-        <button type="submit" className="btn btn-primary">
-          {postToUpdate ? "Update post" : "Create post"}
+        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+          {isSubmitting ? "Saving..." : postToUpdate ? "Update post" : "Create post"}
         </button>
       </div>
     </form>
