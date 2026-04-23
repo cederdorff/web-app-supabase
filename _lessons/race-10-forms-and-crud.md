@@ -43,7 +43,7 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
      - Hvad var svært?
      - Hvad er uklart?
      - Hvordan kan I bruge det, I har lært, fremadrettet – fx i jeres web app-eksamensprojekt?
-3. Del jeres vigtigste pointer i plenum.
+3. Vær klar til at dele jeres vigtigste pointer i plenum.
 
 </details>
 
