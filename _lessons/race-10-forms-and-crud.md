@@ -48,9 +48,9 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 </details>
 
 <details>
-	<summary><strong>2. Repetition: REST, HTTP, CRUD, Supabase og BaaS</strong></summary>
+	<summary><strong>2. Repetition: REST API, HTTP, CRUD, Supabase og BaaS</strong></summary>
 
-- Vi repeterer de centrale begreber fra RACE 8 og RACE 9: hvad er HTTP, REST, CRUD, Supabase og BaaS?
+- Vi repeterer de centrale begreber fra RACE 8 og RACE 9: hvad er HTTP, REST API, CRUD, Supabase og BaaS?
 - Vi gennemgår kort, hvad der sker i et request/response-flow fra React til Supabase og tilbage.
 - Vi taler om, hvordan GET, POST, PATCH og DELETE mapper til Create, Read, Update og Delete.
 - Vi sikrer os, at alle har et fælles fundament at bygge dagens kode på.
@@ -58,13 +58,13 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 </details>
 
 <details>
-	<summary><strong>3. Post App med fuld CRUD</strong></summary>
+  <summary><strong>3. Post App med fuld CRUD</strong></summary>
 
-- Vi introducerer Post App: en simpel app hvor brugere kan oprette, læse, redigere og slette indlæg.
-- Vi gennemgår den struktur vi skal bygge: sider (HomePage, CreatePage, UpdatePage, PostDetailPage) og komponenter.
-- Vi tegner komponenthierarkiet og data-flowet på tavlen.
-- Vi opretter `posts`-tabellen i Supabase med felterne `id`, `title` og `body`.
-- Vi tester endpointet i Thunder Client før vi går i gang med React.
+- Introduktion til Post App: opret, læs, redigér og slet indlæg.
+- Overblik over sider og komponenter.
+- Tegn komponenthierarki og data-flow.
+- Opret `posts`-tabel i Supabase med `id`, `image`, `caption`.
+- Test endpoints i Thunder Client.
 
 </details>
 
