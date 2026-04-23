@@ -93,6 +93,7 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 - Loading states, error handling og user feedback.
 - Opsamling på CRUD-flowet som helhed.
 - Refleksion over dagens læring og brug i rigtige web apps.
+- Afslutningsvis publiceres projektbeskrivelsen for web app-eksamensprojektet: [Web Application - Projektbeskrivelse](https://eaaa.instructure.com/courses/30922/pages/web-application-projektbeskrivelse).
 
 </details>
 
@@ -114,17 +115,4 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 
 ### Links
 
-- [React State – Introduction](https://thevalleyofcode.com/lesson/react-state/)
-- [Managing state](https://thevalleyofcode.com/lesson/react-state/managing-state/)
-- [Component props](https://thevalleyofcode.com/lesson/react-state/component-props/)
-- [Data flow](https://thevalleyofcode.com/lesson/react-state/data-flow/)
-- [The Valley of Code – React Forms (intro)](https://thevalleyofcode.com/lesson/react-forms/)
-- [Managing forms in React](https://thevalleyofcode.com/lesson/react-forms/managing-forms-in-react/)
-- [Form Actions (React 19)](https://thevalleyofcode.com/lesson/react-forms/form-actions/)
-- [React, how to make a checked checkbox editable](https://thevalleyofcode.com/lesson/react-forms/react-checkbox-editable/)
-- [How I fixed an issue with a React login form state and Browser autofill](https://thevalleyofcode.com/lesson/react-forms/react-form-browser-autofill/)
-- [How to get the value of an input element in React](https://thevalleyofcode.com/lesson/react-forms/react-how-to-get-value-input/)
-- [React – UseState Hook](https://react.dev/reference/react/useState)
-- [React – UseEffect Hook](https://react.dev/reference/react/useEffect)
-- [MDN – Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [React – Handling Events](https://react.dev/learn/responding-to-events)
+[Web Application - Projektbeskrivelse](https://eaaa.instructure.com/courses/30922/pages/web-application-projektbeskrivelse)
