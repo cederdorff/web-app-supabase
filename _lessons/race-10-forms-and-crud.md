@@ -25,11 +25,11 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 <details>
 	<summary><strong>1. Opsamling fra RACE 9</strong></summary>
 
-- Vi repeterer kort, hvad I gjorde i RACE 9 med HTTP-metoderne og Thunder Client.
-- Vi gennemgår øvelsen "Fra Thunder Client til React" i fællesskab – kigger på, hvordan GET, POST, PATCH og DELETE blev implementeret med `fetch` i React.
-- Vi sammenligner jeres løsninger og taler om forskelle, ligheder og fejl I mødte undervejs.
-- Vi gennemgår jeres refleksionssvar fra Trin 6 i RACE 9-øvelsen.
-- Vi sikrer os, at alle har en fungerende løsning som udgangspunkt for i dag.
+- Kort opsamling på RACE 9 og arbejdet med HTTP-metoder og Thunder Client.
+- Fælles gennemgang af øvelsen "Fra Thunder Client til React" og CRUD med `fetch`.
+- Sammenligning af løsninger, forskelle og typiske fejl.
+- Gennemgang af refleksionssvar fra Trin 6.
+- Sikring af et fælles udgangspunkt for dagens arbejde.
 
 ---
 
@@ -50,57 +50,49 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 <details>
 	<summary><strong>2. Repetition: REST API, HTTP, CRUD, Supabase og BaaS</strong></summary>
 
-- Vi repeterer de centrale begreber fra RACE 8 og RACE 9: hvad er HTTP, REST API, CRUD, Supabase og BaaS?
-- Vi gennemgår kort, hvad der sker i et request/response-flow fra React til Supabase og tilbage.
-- Vi taler om, hvordan GET, POST, PATCH og DELETE mapper til Create, Read, Update og Delete.
-- Vi sikrer os, at alle har et fælles fundament at bygge dagens kode på.
+- Repetition af HTTP, REST API, CRUD, Supabase og BaaS.
+- Kort gennemgang af request/response-flowet mellem React og Supabase.
+- Kobling mellem GET, POST, PATCH, DELETE og CRUD.
+- Et fælles fagligt fundament for resten af timen.
 
 </details>
 
 <details>
   <summary><strong>3. Post App med fuld CRUD</strong></summary>
 
-- Introduktion til Post App: opret, læs, redigér og slet indlæg.
-- Overblik over sider og komponenter.
+- Introduktion til Post App og overblik over sider og komponenter.
 - Tegn komponenthierarki og data-flow.
-- Opret `posts`-tabel i Supabase med `id`, `image`, `caption`.
+- Opret en `posts`-tabel i Supabase med `id`, `image` og `caption`.
 - Test endpoints i Thunder Client.
+- Byg appen med fuld CRUD: opret, læs, redigér og slet indlæg.
+- Byg en React-app med disse sider:
+  - **HomePage**: vis alle posts (GET)
+  - **CreatePage**: opret nyt post med billede og caption (POST)
+  - **UpdatePage**: redigér billede og caption for et post (PATCH)
+  - **PostDetailPage**: vis og slet et post (DELETE)
+- Brug `useState`, `useEffect` og `fetch` med URL og APIKEY fra `.env`.
+- Brug controlled components til formularfelter.
+- Sørg for korrekt navigation efter CREATE, UPDATE og DELETE.
 
 </details>
 
 <details>
 	<summary><strong>4. Forms i React – teori og live demo</strong></summary>
 
-- Vi taler om controlled components og hvorfor det er det rigtige mønster i React.
-- Vi demonstrerer, hvordan man bruger `useState` til form fields med `onChange` og `value`.
-- Vi viser `onSubmit` og `event.preventDefault()` og hvordan form data sendes med `fetch`.
-- Vi bygger GET i fællesskab live: henter alle posts og viser dem i HomePage med `useEffect` og `useState`.
+- Introduktion til controlled components i React.
+- Demo af `useState`, `onChange` og `value` i formularfelter.
+- Gennemgang af `onSubmit`, `event.preventDefault()` og `fetch`.
+- Live demo af GET med `useEffect` og `useState` på `HomePage`.
 
 </details>
 
 <details>
-	<summary><strong>5. Øvelse: Byg en Post App med fuld CRUD</strong></summary>
+	<summary><strong>5. Opsamling og best practices</strong></summary>
 
-- I skal bygge en Post App, hvor brugere kan oprette, læse, redigere og slette indlæg gemt i Supabase.
-- Opret en `posts`-tabel i jeres Supabase-projekt med mindst felterne `title` og `body`.
-- Byg en React-app med følgende sider og funktionalitet:
-  - **HomePage**: hent og vis alle posts med GET
-  - **CreatePage**: opret et nyt post med POST via en formular
-  - **UpdatePage**: hent ét post og rediger det med PATCH via en formular
-  - **PostDetailPage**: vis ét post og slet det med DELETE
-- Brug `useState`, `useEffect` og `fetch` med URL og APIKEY fra `.env`.
-- Brug controlled components til alle formularfelter.
-- Navigér korrekt efter CREATE, UPDATE og DELETE.
-
-</details>
-
-<details>
-	<summary><strong>6. Opsamling og best practices</strong></summary>
-
-- Vi taler om, hvordan man holder UI synkroniseret med databasen.
-- Vi diskuterer loading states, error handling og user feedback.
-- Vi samler op på CRUD-flowet i sin helhed.
-- Vi reflekterer over, hvad I har lært denne dag, og hvordan det bruges i rigtige web apps.
+- Hvordan UI holdes synkroniseret med databasen.
+- Loading states, error handling og user feedback.
+- Opsamling på CRUD-flowet som helhed.
+- Refleksion over dagens læring og brug i rigtige web apps.
 
 </details>
 
