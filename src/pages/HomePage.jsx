@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
+import PostCard from "../components/PostCard";
 
 const URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -8,23 +8,24 @@ const headers = {
 };
 
 export default function HomePage() {
-  const [products, setProducts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    async function loadProducts() {
+    async function loadPosts() {
       const response = await fetch(URL, { headers });
       const data = await response.json();
-      setProducts(data);
+      setPosts(data);
     }
-    loadProducts();
+
+    loadPosts();
   }, []);
 
   return (
     <main className="app">
-      <h1 className="page-title">All Products</h1>
-      <section className="product-list">
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+      <h1 className="page-title">All Posts</h1>
+      <section className="post-list">
+        {posts.map(post => (
+          <PostCard key={post.id} post={post} />
         ))}
       </section>
     </main>

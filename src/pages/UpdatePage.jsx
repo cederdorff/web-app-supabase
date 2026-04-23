@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import ProductForm from "../components/ProductForm";
+import PostForm from "../components/PostForm";
 
 const URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -11,28 +11,29 @@ const headers = {
 export default function UpdatePage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
+  const [post, setPost] = useState(null);
 
   useEffect(() => {
-    async function loadProduct() {
+    async function loadPost() {
       const response = await fetch(`${URL}?id=eq.${id}`, { headers });
       const data = await response.json();
-      setProduct(data[0]);
+      setPost(data[0]);
     }
-    loadProduct();
+
+    loadPost();
   }, [id]);
 
-  async function handleSubmit(productData) {
-    await fetch(`${URL}?id=eq.${id}`, { method: "PATCH", headers, body: JSON.stringify(productData) });
-    navigate(`/products/${id}`);
+  async function handleSubmit(postData) {
+    await fetch(`${URL}?id=eq.${id}`, { method: "PATCH", headers, body: JSON.stringify(postData) });
+    navigate(`/posts/${id}`);
   }
 
-  if (!product) return <p className="status-msg">Loading…</p>;
+  if (!post) return <p className="status-msg">Loading...</p>;
 
   return (
     <main className="app">
-      <h1 className="page-title">Update Product</h1>
-      <ProductForm onSubmit={handleSubmit} productToUpdate={product} />
+      <h1 className="page-title">Update Post</h1>
+      <PostForm onSubmit={handleSubmit} postToUpdate={post} />
     </main>
   );
 }
