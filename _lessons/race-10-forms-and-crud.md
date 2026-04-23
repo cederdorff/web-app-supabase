@@ -100,7 +100,8 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 
 ### Slides
 
-- Kommer her
+- [Supabase](https://cederdorff.com/race/slides/supabase.pdf)
+- [API and REST](https://cederdorff.com/race/slides/api-and-rest.pdf)
 
 ### Opgaver
 
