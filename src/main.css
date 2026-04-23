@@ -61,11 +61,11 @@ a:hover {
 .page-title {
   font-size: 3.2em;
   line-height: 1.1;
-  margin: 0;
+  margin: 0 0 0.9em;
 }
 
 .feed-intro {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 .feed-eyebrow {
@@ -90,55 +90,27 @@ a:hover {
   animation: fadeIn 0.5s;
 }
 
-textarea,
-input,
-button,
-select {
-  font-size: 1rem;
-  font-family: inherit;
-  border-radius: 8px;
-  border: none;
-  padding: 1rem;
-  box-shadow: var(--shadow-soft);
-  background-color: white;
-  line-height: 1.5;
-  margin: 0;
-}
-
-button {
-  color: var(--white);
-  font-weight: 500;
-  cursor: pointer;
-  padding: 1em 2em;
-  background-color: var(--green);
-  transition: 0.5s;
-  width: 100%;
-}
-
-button:hover {
-  background-color: var(--light-green);
-  color: var(--green);
-}
-
-textarea:hover,
-input:hover,
-button:hover {
-  box-shadow: 0 0 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
-}
-
-button:active {
-  box-shadow: 0 0 1px hsla(0, 0%, 0%, 0.4);
-  transform: translateY(1px);
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   border-radius: 999px;
+  border: none;
+  cursor: pointer;
   width: auto;
   min-width: 140px;
+  padding: 1em 2em;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-soft);
+  transition:
+    background-color 0.5s,
+    color 0.5s,
+    box-shadow 0.5s,
+    transform 0.2s;
 }
 
 .btn-primary {
@@ -161,6 +133,15 @@ button:active {
 .btn-danger:hover {
   background-color: var(--text-color-danger);
   color: var(--white);
+}
+
+.btn:hover {
+  box-shadow: 0 0 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+}
+
+.btn:active {
+  box-shadow: 0 0 1px hsla(0, 0%, 0%, 0.4);
+  transform: translateY(1px);
 }
 
 .site-header {
@@ -236,11 +217,24 @@ button:active {
 .form-field input,
 .form-field textarea {
   width: 100%;
+  margin: 0;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.5;
+  border-radius: 8px;
   border: 2px solid #fff;
+  background-color: white;
+  box-shadow: var(--shadow-soft);
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     transform 0.25s ease;
+}
+
+.form-field input:hover,
+.form-field textarea:hover {
+  box-shadow: 0 0 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
 }
 
 .form-field input::placeholder,
@@ -410,6 +404,7 @@ button:active {
 
   .page-title {
     font-size: 2.4em;
+    margin-bottom: 0.75em;
   }
 
   .post-detail-actions,
