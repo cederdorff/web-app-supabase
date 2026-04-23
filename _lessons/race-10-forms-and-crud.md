@@ -112,6 +112,7 @@ Vi skal bygge en Post App i React, hvor data gemmes i Supabase. Fokus er på for
 
 - [post-app-supabase-template](https://github.com/cederdorff/post-app-supabase-template)
 - [post-app-supabase](https://github.com/cederdorff/post-app-supabase)
+- [react-supabase-products](https://github.com/cederdorff/react-supabase-products)
 
 ### Links
 
