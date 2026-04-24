@@ -1,21 +1,24 @@
-# RACE 10 - Øvelse: Post App med Forms & CRUD
+# RACE 10 - Øvelse: Post App med Forms og CRUD
 
 ## 0. Formål
 
-I denne øvelse skal I bygge en Post App i React med Supabase som backend. Fokus er på:
+I denne øvelse skal du bygge en lille Post App i React med Supabase som backend.
+
+Fokus er på:
 
 - controlled forms i React
 - GET, POST, PATCH og DELETE med `fetch`
 - navigation mellem sider
-- at få det grundlæggende CRUD-flow til at virke først
+- at få det grundlæggende CRUD-flow til at virke
 
-Målet er, at I ender med en lille, men gennemført CRUD-app for `posts`.
+Målet er ikke at bygge en avanceret app.
+Målet er at bygge en CRUD-app, som virker.
 
 ## 1. Startprojekt
 
 - Brug dette template repo: [post-app-supabase-template](https://github.com/cederdorff/post-app-supabase-template)
-- Opret jeres eget repository ud fra templaten
-- Hent derefter jeres eget repository ned lokalt
+- Opret dit eget repository ud fra templaten
+- Hent derefter dit eget repository ned lokalt
 - Åbn projektet i VS Code
 - Kør:
 
@@ -24,24 +27,24 @@ npm install
 npm run dev
 ```
 
-> Vigtigt: Projektet fungerer ikke fuldt endnu. Før appen kan hente og gemme data, skal I have et Supabase-projekt, en `posts`-tabel og en korrekt `.env` fil.
+> Vigtigt: Projektet fungerer ikke fuldt endnu. Før appen kan hente og gemme data, skal du have et Supabase-projekt, en `posts`-tabel og en korrekt `.env` fil.
 
-## 2. Før I starter
+## 2. Før du starter
 
-I skal have:
+Du skal have:
 
 - et Supabase-projekt
 - en tabel med navnet `posts`
 - felterne `id`, `image` og `caption`
 - testet GET, POST, PATCH og DELETE i Thunder Client
 
-I må meget gerne bare arbejde videre i det Supabase-projekt, I allerede har fra tidligere.
+Du må meget gerne bare arbejde videre i det Supabase-projekt, du allerede har fra tidligere.
 
 ### Opret `posts`-tabellen i Supabase
 
-Hvis I ikke allerede har en `posts`-tabel, så gør sådan her:
+Hvis du ikke allerede har en `posts`-tabel, så gør sådan her:
 
-1. Åbn jeres eksisterende Supabase-projekt
+1. Åbn dit eksisterende Supabase-projekt
 2. Gå til **Table Editor**
 3. Klik på **Create a new table**
 4. Giv tabellen navnet `posts`
@@ -58,7 +61,7 @@ Hvis I ikke allerede har en `posts`-tabel, så gør sådan her:
 
 Hvis `id` ikke autogenereres, så sørg for at `id` er sat op som primary key.
 
-`created_at` bliver ofte oprettet automatisk af Supabase. Det er helt fint. I skal ikke bruge det aktivt i denne øvelse, men det er normalt, at det står i tabellen.
+`created_at` bliver ofte oprettet automatisk af Supabase. Det er helt fint. Du skal ikke bruge det aktivt i denne øvelse.
 
 ### Gør tabellen unrestricted lige nu
 
@@ -70,13 +73,13 @@ For at gøre det nemt at teste i denne øvelse, skal tabellen være åben for re
 4. Gå til policies / security
 5. Sæt tabellen til **unrestricted** eller slå RLS fra for `posts`
 
-Det er kun for at gøre øvelsen enkel. Senere kan I arbejde med sikkerhed og policies igen.
+Det er kun for at gøre det nemt at komme i gang. Senere kan du arbejde med sikkerhed og policies igen.
 
 ### Indsæt et par test-data
 
-Det er en god ide at indsætte 2-3 rækker med det samme, så I har noget at vise på forsiden.
+Det er en god ide at indsætte 2-3 rækker med det samme, så du har noget at vise på forsiden.
 
-I må gerne tage udgangspunkt i disse eksempler og kun indsætte `image` og `caption` i Supabase:
+Du må gerne tage udgangspunkt i disse eksempler og kun indsætte `image` og `caption` i Supabase:
 
 ```json
 [
@@ -91,41 +94,64 @@ I må gerne tage udgangspunkt i disse eksempler og kun indsætte `image` og `cap
   {
     "caption": "Delicious food at the restaurant",
     "image": "https://images.unsplash.com/photo-1548940740-204726a19be3?auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    "caption": "Exploring the city center of Aarhus",
-    "image": "https://images.unsplash.com/photo-1612624629424-ddde915d3dc5?auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    "caption": "A cozy morning with coffee",
-    "image": "https://images.unsplash.com/photo-1545319261-f3760f9dd64d?auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    "caption": "Serenity of the forest",
-    "image": "https://images.unsplash.com/photo-1661505216710-32316e7b5bb3?auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    "caption": "A beautiful morning in Aarhus",
-    "image": "https://images.unsplash.com/photo-1573997953524-efed43db70a0?auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    "caption": "Rainbow reflections of the city of Aarhus",
-    "image": "https://images.unsplash.com/photo-1558443336-dbb3de50b8b2?auto=format&fit=crop&w=500&q=80"
   }
 ]
 ```
 
-I behøver ikke indsætte alle. 3-4 rækker er fint til at starte med.
+### Test dit endpoint
 
-### Test jeres endpoint
+Når tabellen er klar, så lav lige et par hurtige tests i Thunder Client.
 
-Når tabellen er klar, så lav lige et par hurtige tests i Thunder Client:
+Du skal bruge:
+
+1. URL'en til `posts`
+2. din `anon` eller `publishable` API key
+
+Begge dele finder du i Supabase under:
+
+- **Project Settings** -> **API**
+
+Brug denne URL:
+
+```txt
+https://dit-project-id.supabase.co/rest/v1/posts
+```
+
+I Thunder Client:
+
+1. Åbn Thunder Client i VS Code
+2. Opret en ny request
+3. Indsæt URL'en
+4. Tilføj disse headers:
+
+```txt
+apikey: DIN_KEY
+Content-Type: application/json
+```
+
+Til `PATCH` og `DELETE` kan du bruge:
+
+```txt
+https://dit-project-id.supabase.co/rest/v1/posts?id=eq.1
+```
+
+Til `POST` og `PATCH` skal du også sende JSON i body, fx:
+
+```json
+{
+  "image": "https://example.com/photo.jpg",
+  "caption": "Mit første post"
+}
+```
+
+Når det er sat op, så test:
 
 - GET alle posts
 - POST et nyt post
-- Hvis I vil: prøv også PATCH eller DELETE på ét post
+- PATCH et eksisterende post
+- DELETE et eksisterende post
 
-Målet er bare at sikre, at endpointet virker, før I går videre til React-koden.
+Målet er bare at sikre, at endpointet virker, før du går videre til React-koden.
 
 Opret en `.env` fil i projektets rod:
 
@@ -134,293 +160,208 @@ VITE_SUPABASE_URL=https://dit-project-id.supabase.co/rest/v1/posts
 VITE_SUPABASE_APIKEY=din_sb_publishable_key
 ```
 
-## 3. Få overblik over starteren
+## 3. Få overblik over projektet
 
-Kig i disse filer og find `TODO`:
+Kig i disse filer, før du går i gang (du skal ikke gøre noget):
 
+- `src/App.jsx`
 - `src/pages/HomePage.jsx`
 - `src/pages/CreatePage.jsx`
-- `src/pages/UpdatePage.jsx`
 - `src/pages/PostDetailPage.jsx`
-- `src/components/PostForm.jsx`
+- `src/pages/UpdatePage.jsx`
 
-Tal sammen om:
+Der er `TODO` kommentarer i starterkoden, som viser de vigtigste steder at arbejde.
+
+Appen bruger disse routes:
+
+- `/` viser alle posts
+- `/create` viser formularen til at oprette et post
+- `/posts/:id` viser et enkelt post
+- `/posts/:id/update` viser formularen til at redigere et post
+
+Tænk over:
 
 - Hvilke sider findes allerede?
-- Hvad er klar?
-- Hvad mangler I selv at implementere?
+- Hvilke routes findes allerede?
+- Hvilken side viser alle posts?
+- Hvilken side bruges til at oprette et post?
+- Hvilke sider bruger `:id` i URL'en?
 
 ## 4. Implementer GET i HomePage
 
 Mål: Vis alle posts på forsiden.
 
-I skal:
+Arbejd i: `src/pages/HomePage.jsx`
 
-1. Bruge `fetch(URL, { headers })`
-2. Konvertere svaret med `await response.json()`
-3. Gemme data i `posts`
-4. Vise posts i UI
-5. Kontrollere i browseren, at data faktisk bliver vist
-6. Sammenligne jeres React-kald med GET-kaldet i Thunder Client
+Find først:
 
-Spørgsmål:
+- `posts` state
+- `useEffect`
+- stedet i JSX hvor posts skal vises
 
-- Hvad svarer GET til i CRUD?
-- Hvorfor ligger GET-kaldet i `useEffect`?
-
-<details>
-<summary>Vejledende løsning</summary>
+Eksempel:
 
 ```jsx
 useEffect(() => {
-  async function loadPosts() {
+  async function getPosts() {
     const response = await fetch(URL, { headers });
     const data = await response.json();
     setPosts(data);
   }
 
-  loadPosts();
+  getPosts();
 }, []);
 ```
 
-</details>
+Du skal:
 
-## 5. Forstå og brug den controlled form i PostForm
+1. Bruge `fetch(URL, { headers })`
+2. Konvertere svaret med `await response.json()`
+3. Gemme data i `posts` state
+4. Vise posts i UI
+5. Kontrollere i browseren, at data (`posts`) faktisk bliver vist
 
-Mål: Forstå hvordan den eksisterende controlled form i templaten virker.
+## 5. Gør formularen controlled i CreatePage
 
-Kig på `PostForm.jsx`.
+Mål: Opret et nyt post med en controlled form.
 
-I starter-templaten er formularen allerede sat op som en controlled form.
+Et inputfelt er controlled, når dets værdi bliver styret af React state.
+Det betyder, at du bruger `useState`, giver feltet en `value`, og opdaterer state med `onChange`.
 
-Det betyder, at jeres opgave her ikke er at bygge den fra bunden, men at:
+Det er vigtigt her, fordi du hele tiden skal kende værdien af `image` og `caption`, så de senere kan sendes med i `handleSubmit`.
 
-- læse den
-- forstå hvorfor den er controlled
-- bruge den rigtigt sammen med `onSubmit`
+Arbejd i: `src/pages/CreatePage.jsx`
 
-Forklar:
+Find først:
 
-- hvorfor bruger vi `useState` til `image` og `caption`?
-- hvad gør `value`?
-- hvad gør `onChange`?
-- hvorfor bruger vi `event.preventDefault()`?
+- formularen
+- inputfeltet til `image`
+- tekstfeltet til `caption`
+- `handleSubmit`
 
-En controlled component betyder, at inputfeltets værdi bliver styret af React state.
-
-Det vil sige:
-
-- brugeren skriver i et inputfelt
-- `onChange` bliver kaldt
-- state bliver opdateret
-- den nye state-værdi bliver vist tilbage i feltet via `value`
-
-Det er derfor, vi siger, at React “kontrollerer” feltet.
-
-I denne øvelse er både `image` og `caption` controlled inputs i templaten allerede.
-
-Det er smart i React, fordi React så hele tiden kender værdien af formularen.
-
-Det betyder:
-
-- I altid ved, hvad der står i formularen lige nu
-- det er nemt at sende data videre i `onSubmit`
-- det er nemmere at validere felter
-- det er nemmere at genbruge samme formular til både create og update
-- UI og data hænger tæt sammen, hvilket passer godt til Reacts måde at arbejde på
-
-I denne Post App er det især smart, fordi:
-
-- samme formular bruges både til create og update
-- vi gerne vil kunne sende `image` og `caption` direkte videre i `handleSubmit`
-- vi gerne vil kunne vise preview af billedet, mens brugeren skriver
-
-Jeres fokus i dette punkt er derfor:
-
-1. Kig på hvordan `image` og `caption` er bundet til state
-2. Kig på hvordan `onChange` opdaterer state
-3. Forstå hvorfor `onSubmit({ image, caption })` virker
-4. Forstå hvorfor preview af billedet opdateres, når `image` ændrer sig
-
-Kig især efter dette mønster:
+Eksempel:
 
 ```jsx
+const [image, setImage] = useState("");
 const [caption, setCaption] = useState("");
+
+<input
+  value={image}
+  onChange={(event) => setImage(event.target.value)}
+  required
+/>
 
 <textarea
   value={caption}
-  onChange={(e) => setCaption(e.target.value)}
+  onChange={(event) => setCaption(event.target.value)}
+  required
 />
 ```
 
-Her er pointen:
+Du skal:
 
-- `caption` er den aktuelle værdi
-- `value={caption}` binder state til feltet
-- `onChange` opdaterer state, når brugeren skriver
+1. Lave state til `image`
+2. Lave state til `caption`
+3. Binde felterne til state med `value`
+4. Opdatere state med `onChange`
+5. Bruge `required` på felterne
+6. Bruge `event.preventDefault()` i `handleSubmit`
 
 ## 6. Implementer POST i CreatePage
 
-Mål: Opret et nyt post i databasen.
+Mål: Gem et nyt post i databasen.
 
-I skal:
+Arbejd i: `src/pages/CreatePage.jsx`
 
-1. Lave `handleSubmit(postData)`
-2. Sende `POST` med `fetch`
-3. Bruge `JSON.stringify(postData)`
-4. Navigere tilbage til `/` ved succes
-5. Teste at et nyt post bliver gemt i databasen
+Skriv koden i `handleSubmit`, når formularen allerede er bundet til state.
 
-Kort flow:
+Det sker sådan her:
 
-1. Brugeren udfylder formularen i `PostForm`
-2. `PostForm` kalder `onSubmit({ image, caption })`
-3. `CreatePage` modtager data i `handleSubmit(postData)`
-4. `handleSubmit` sender data videre med `fetch`
-5. Ved succes navigerer appen tilbage til forsiden
+1. Brugeren udfylder formularen
+2. `handleSubmit` bliver kaldt
+3. Data sendes med `fetch`
+4. Appen navigerer tilbage til `/`
 
-Det vigtige her er:
-
-- `PostForm` står for formularen
-- `CreatePage` står for POST-requesten
-- `postData` er det objekt, I sender til Supabase
-
-<details>
-<summary>Vejledende løsning</summary>
+Eksempel:
 
 ```jsx
-async function handleSubmit(postData) {
+async function handleSubmit(event) {
+  event.preventDefault();
+
   await fetch(URL, {
     method: "POST",
     headers,
-    body: JSON.stringify(postData),
+    body: JSON.stringify({
+      image: image.trim(),
+      caption: caption.trim(),
+    }),
   });
 
   navigate("/");
 }
 ```
 
-</details>
+Du skal:
 
-## 7. Implementer GET + PATCH i UpdatePage
+1. Lave `handleSubmit(event)`
+2. Bruge `event.preventDefault()`
+3. Sende `POST` med `fetch`
+4. Bruge `JSON.stringify(...)`
+5. Navigere tilbage til forsiden med `navigate("/")`
 
-Mål: Hent ét post og brug det som startdata i formularen.
+## 7. Implementer GET og DELETE i PostDetailPage
 
-Kort flow:
+Mål: Vis et enkelt post og gør det muligt at slette det.
 
-1. Brugeren klikker på edit på detail-siden
-2. Appen navigerer til `"/posts/:id/update"`
-3. `UpdatePage` læser `id` med `useParams()`
-4. `UpdatePage` henter ét post fra Supabase
-5. Data gives videre til `PostForm`
-6. Brugeren retter billed-URL eller caption
-7. `handleSubmit(postData)` sender en PATCH-request
-8. Ved succes navigerer appen tilbage til detail-siden
+Arbejd i: `src/pages/PostDetailPage.jsx`
 
-I skal:
+Find først:
 
-1. Bruge `id` fra `useParams()`
-2. Hente ét post med querystring:
+- `useParams()`
+- state til postet
+- `useEffect`
+- delete-knappen
 
-```js
-?id=eq.${id}
-```
-
-3. Gemme resultatet i `post`
-4. Give `post` videre til `PostForm`
-5. Implementere PATCH i `handleSubmit`
-6. Navigere tilbage til detail-siden ved succes
-
-Det vigtige her er:
-
-- at I bruger `id` fra URL'en
-- at I henter ét post før formularen vises
-- at I sender PATCH til det rigtige post med querystring
-- at formularen får data ind som props fra `UpdatePage`
-
-Det er smart, at samme `PostForm` kan bruges igen:
-
-- i `CreatePage` bruges formularen uden eksisterende data
-- i `UpdatePage` sendes et eksisterende `post` ind som prop
-- derfor kan formularen vise de gamle værdier først og derefter lade brugeren redigere dem
-
-Spørgsmål:
-
-- Hvordan kan det lade sig gøre at bruge samme `PostForm` til både create og update?
-
-<details>
-<summary>Vejledende løsning</summary>
-
-```jsx
-useEffect(() => {
-  async function loadPost() {
-    const response = await fetch(`${URL}?id=eq.${id}`, { headers });
-    const data = await response.json();
-    setPost(data[0]);
-  }
-
-  loadPost();
-}, [id]);
-
-async function handleSubmit(postData) {
-  await fetch(`${URL}?id=eq.${id}`, {
-    method: "PATCH",
-    headers,
-    body: JSON.stringify(postData),
-  });
-
-  navigate(`/posts/${id}`);
-}
-```
-
-</details>
-
-## 8. Implementer GET + DELETE i PostDetailPage
-
-Mål: Vis ét post og gør det muligt at slette det.
-
-Kort flow:
+Det sker sådan her:
 
 1. Brugeren klikker på et post på forsiden
 2. Appen navigerer til `"/posts/:id"`
-3. `PostDetailPage` læser `id` fra URL'en
-4. Komponenten henter ét post med GET
-5. Billede og caption bliver vist
-6. Hvis brugeren klikker delete, spørger appen om bekræftelse
-7. Ved bekræftelse sendes DELETE-requesten
-8. Ved succes navigerer appen tilbage til forsiden
+3. `PostDetailPage` læser `id` med `useParams()`
+4. Komponenten henter et enkelt post
+5. Data bliver vist
+6. Brugeren kan slette med delete-knappen
+7. Appen spørger om bekræftelse med `window.confirm(...)`
+8. Ved bekræftelse sendes en DELETE-request
+9. Appen navigerer tilbage til `/`
 
-I skal:
-
-1. Hente ét post med GET
-2. Vise billedet og caption
-3. Lave en delete-knap
-4. Spørge brugeren med `window.confirm(...)`
-5. Sende DELETE-request
-6. Navigere tilbage til forsiden ved succes
-
-Det vigtige her er:
-
-- at I genbruger `id` fra URL'en
-- at GET og DELETE begge rammer det samme post
-- at I først sletter, når brugeren har bekræftet
-
-Det smarte her er, at detail-siden både viser og sletter det samme post ud fra samme `id`.
-
-<details>
-<summary>Vejledende løsning</summary>
+Eksempel:
 
 ```jsx
 useEffect(() => {
-  async function loadPost() {
+  async function getPost() {
     const response = await fetch(`${URL}?id=eq.${id}`, { headers });
     const data = await response.json();
     setPost(data[0]);
   }
 
-  loadPost();
+  getPost();
 }, [id]);
+```
 
+Du skal:
+
+1. Bruge `useParams()` til at læse `id`
+2. Hente et post med querystring: `` `${URL}?id=eq.${id}` ``
+3. Gemme resultatet i state
+4. Vise `image` og `caption`
+5. Lave en delete-knap
+6. Bruge `window.confirm(...)`
+7. Sende en DELETE-request
+8. Navigere tilbage til forsiden
+
+Eksempel på delete:
+
+```jsx
 async function handleDelete() {
   const confirmed = window.confirm("Delete this post?");
 
@@ -435,136 +376,182 @@ async function handleDelete() {
 }
 ```
 
-</details>
+## 8. Implementer GET og PATCH i UpdatePage
 
-## 9. Når det grundlæggende virker
+Mål: Hent et eksisterende post, vis det i formularen og gem ændringer.
 
-Når jeres CRUD-flow og forms virker, kan I lægge det næste lag ovenpå:
+Formularen er stadig controlled her.
+Forskellen er, at `image` og `caption` ikke starter som tomme felter, men bliver udfyldt med data fra databasen.
 
-- simpel validering i formularen
-- loading states
-- tom-state på forsiden
-- `try/catch`
-- simple fejlbeskeder
-- `response.ok` checks
-- disable af knapper mens requests kører
+Arbejd i: `src/pages/UpdatePage.jsx`
 
-I behøver ikke gøre det hele på én gang. Tag ét punkt ad gangen.
+Find først:
 
-### 9.1 Simpel validering i formularen
+- `useParams()`
+- state til `image` og `caption`
+- `useEffect`
+- `handleSubmit`
+- formularfelterne
 
-Start med noget meget enkelt.
+Det sker sådan her:
 
-Forslag:
+1. Brugeren klikker på edit på detail-siden
+2. Appen navigerer til `"/posts/:id/update"`
+3. `UpdatePage` læser `id` med `useParams()`
+4. `UpdatePage` henter et enkelt post
+5. `image` og `caption` sættes som startværdier i formularen
+6. Brugeren retter felterne
+7. `handleSubmit` sender en PATCH-request
+8. Appen navigerer tilbage til detail-siden
 
-- tjek om `caption` er tom
-- stop submit hvis feltet er tomt
-- vis en kort fejltekst under feltet
-
-Det kræver, at I selv tilføjer lidt ny state i `PostForm`, fx en `captionError`.
-
-Spørg jer selv:
-
-- Hvad skal være udfyldt for at et post giver mening?
-- Hvad er den simpleste validering, der hjælper brugeren?
-
-<details>
-<summary>Vejledende løsning</summary>
+Eksempel:
 
 ```jsx
-const [captionError, setCaptionError] = useState("");
+useEffect(() => {
+  async function getPost() {
+    const response = await fetch(`${URL}?id=eq.${id}`, { headers });
+    const data = await response.json();
+    setImage(data[0].image);
+    setCaption(data[0].caption);
+  }
 
-if (!caption.trim()) {
-  setCaptionError("Caption is required.");
-  return;
+  getPost();
+}, [id]);
+```
+
+Du skal:
+
+1. Bruge `id` fra `useParams()`
+2. Hente et enkelt post med querystring: `` `${URL}?id=eq.${id}` ``
+3. Sætte `image` og `caption` i state ud fra det hentede post
+4. Bruge state som `value` i formularen
+5. Sende en PATCH-request i `handleSubmit`
+6. Navigere tilbage til `"/posts/:id"`
+
+Eksempel på submit:
+
+```jsx
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  await fetch(`${URL}?id=eq.${id}`, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify({
+      image: image.trim(),
+      caption: caption.trim(),
+    }),
+  });
+
+  navigate(`/posts/${id}`);
 }
 ```
 
-</details>
+## 9. Ekstra udfordringer
 
-### 9.2 Loading states
+Hvis du bliver hurtigt færdig, eller hvis det giver mening for dig at bygge videre, kan du også arbejde med nogle af de her ting.
 
-Når appen henter eller gemmer data, er det rart at vise, at noget er i gang.
+Du behøver ikke lave det hele.
+Du kan sagtens vælge kun én del, hvis den passer godt til dit niveau eller den tid, du har.
 
-Forslag:
+- tilføj loading states
+- tilføj en tom-state på forsiden
+- tilføj `try/catch`
+- tilføj simple fejlbeskeder
+- tilføj `response.ok` checks
+- deaktiver knapper mens requests kører
+- saml `URL` og `headers` i en separat fil
 
-- brug `isLoading` i sider der henter data
-- brug `isSubmitting` i create/update
-- brug `isDeleting` i detail-siden
+Tag gerne kun et punkt ad gangen.
 
-Eksempler:
+Her er mere hjælp til at komme i gang:
+
+### 9.1 Loading states
+
+En loading state betyder, at du gemmer i state, om appen er i gang med at hente eller gemme data.
+
+Det er smart, fordi du så kan vise en tekst som:
 
 - `"Loading posts..."`
 - `"Loading post..."`
 - `"Saving..."`
-- `"Deleting..."`
 
-<details>
-<summary>Vejledende løsning</summary>
+Hvis du vil prøve det i `HomePage`, kan du gøre sådan her:
+
+1. lav en state:
 
 ```jsx
-const [isLoading, setIsLoading] = useState(false);
-
-setIsLoading(true);
-
-// fetch ...
-
-setIsLoading(false);
+const [isLoading, setIsLoading] = useState(true);
 ```
 
-</details>
-
-### 9.3 Tom-state på forsiden
-
-Hvis der ikke er nogen posts endnu, skal forsiden stadig give mening.
-
-Forslag:
-
-- vis en besked når `posts.length === 0`
-- forklar kort hvad brugeren kan gøre nu
+2. sæt `isLoading(true)` før du henter data
+3. sæt `isLoading(false)` når data er hentet
+4. vis en besked i UI mens `isLoading` er `true`
 
 Eksempel:
 
-- `"No posts yet"`
-- `"Create your first post to get started."`
-
-<details>
-<summary>Vejledende løsning</summary>
-
 ```jsx
-{!isLoading && !errorMessage && posts.length === 0 && (
-  <section className="empty-state">
-    <h2>No posts yet</h2>
-    <p>Create your first post to get started.</p>
-  </section>
-)}
+const [posts, setPosts] = useState([]);
+const [isLoading, setIsLoading] = useState(true);
+
+useEffect(() => {
+  async function getPosts() {
+    setIsLoading(true);
+
+    const response = await fetch(URL, { headers });
+    const data = await response.json();
+    setPosts(data);
+
+    setIsLoading(false);
+  }
+
+  getPosts();
+}, []);
 ```
 
-</details>
-
-### 9.4 `try/catch`
-
-Når I bruger `fetch`, kan noget gå galt. Derfor giver det mening at pakke jeres requests ind i `try/catch`.
-
-Forslag:
+Og i dit return kan du fx gøre sådan her:
 
 ```jsx
-try {
-  // fetch-kode
-} catch (error) {
-  // sæt fejlbesked i state
+{
+  isLoading && <p>Loading posts...</p>;
 }
 ```
 
-Start med at tilføje `try/catch` i:
+Du kan bruge samme idé i:
 
-- `HomePage`
-- `CreatePage`
-- `UpdatePage`
-- `PostDetailPage`
+- `PostDetailPage` med fx `Loading post...`
+- `CreatePage` med fx `Saving...`
+- `UpdatePage` med fx `Saving...`
 
-<details>
-<summary>Vejledende løsning</summary>
+### 9.2 Tom-state på forsiden
+
+En tom-state er en besked, du viser, hvis listen er tom.
+
+Det giver mening i `HomePage`, hvis `posts.length === 0`.
+
+Eksempel:
+
+```jsx
+{
+  posts.length === 0 && <p>Der er ingen posts endnu.</p>;
+}
+```
+
+Du kan også vælge kun at vise den, når du ikke loader:
+
+```jsx
+{
+  !isLoading && posts.length === 0 && <p>Der er ingen posts endnu.</p>;
+}
+```
+
+### 9.3 `try/catch`
+
+`try/catch` bruger du, når du vil fange fejl i dit fetch-kald.
+
+Det er især nyttigt, hvis du vil vise en fejlbesked i stedet for bare at få en fejl i console.
+
+Eksempel:
 
 ```jsx
 try {
@@ -572,107 +559,146 @@ try {
   const data = await response.json();
   setPosts(data);
 } catch (error) {
-  setErrorMessage("Could not load posts.");
+  console.log(error);
 }
 ```
 
-</details>
-
-### 9.5 Simple fejlbeskeder
-
-Når noget går galt, skal brugeren have en kort besked.
-
-Forslag:
-
-- lav en `errorMessage` state
-- vis beskeden i UI hvis der er en fejl
-
-Eksempler:
-
-- `"Could not load posts."`
-- `"Could not create post."`
-- `"Could not update post."`
-- `"Could not delete post."`
-
-Målet er ikke perfekte beskeder. Målet er bare, at brugeren ikke står uden feedback.
-
-<details>
-<summary>Vejledende løsning</summary>
+Hvis du vil gøre mere ud af det, kan du lave en state som fx:
 
 ```jsx
 const [errorMessage, setErrorMessage] = useState("");
-
-{errorMessage && <p className="status-banner status-banner-error">{errorMessage}</p>}
 ```
 
-</details>
+og så sætte en besked i `catch`.
 
-### 9.6 `response.ok`
-
-Selv hvis `fetch` lykkes teknisk, kan serveren stadig svare med en fejlstatus.
-
-Derfor kan I tjekke:
+Du kan fx gøre sådan her:
 
 ```jsx
-if (!response.ok) {
-  throw new Error("Could not load posts.");
+catch (error) {
+  setErrorMessage("Kunne ikke hente posts.");
 }
 ```
 
-Det gør jeres fejlflow mere tydeligt og mere robust.
+### 9.4 Simple fejlbeskeder
 
-<details>
-<summary>Vejledende løsning</summary>
+Hvis du allerede har en `errorMessage` state, kan du vise den i UI.
+
+Det kan være en god første forbedring, fordi brugeren så får feedback, hvis noget går galt.
+
+Eksempel:
+
+```jsx
+const [errorMessage, setErrorMessage] = useState("");
+```
+
+Og i dit return:
+
+```jsx
+{
+  errorMessage && <p>{errorMessage}</p>;
+}
+```
+
+Du kan bruge samme idé i:
+
+- `HomePage`
+- `PostDetailPage`
+- `CreatePage`
+- `UpdatePage`
+
+### 9.5 `response.ok`
+
+Selvom `fetch` virker, kan serveren godt svare med en fejlstatus.
+
+Derfor kan du tjekke `response.ok`.
+
+Eksempel:
+
+```jsx
+if (!response.ok) {
+  throw new Error("Noget gik galt");
+}
+```
+
+Det giver især mening sammen med `try/catch`.
+
+Et eksempel kunne se sådan her ud:
 
 ```jsx
 const response = await fetch(URL, { headers });
 
 if (!response.ok) {
-  throw new Error("Could not load posts.");
+  throw new Error("Noget gik galt");
 }
 
 const data = await response.json();
 ```
 
-</details>
+### 9.6 Deaktiver knapper mens requests kører
 
-### 9.7 Disable knapper mens requests kører
+Hvis du har en state som fx `isSubmitting`, kan du deaktivere submit-knappen, mens appen gemmer.
 
-Når en request er i gang, er det en god ide at disable relevante knapper.
+Eksempel:
 
-Forslag:
+```jsx
+const [isSubmitting, setIsSubmitting] = useState(false);
+```
 
-- disable submit-knappen i create/update mens der gemmes
-- disable delete-knappen mens der slettes
+I `handleSubmit` kan du sætte:
 
-Det hjælper med at undgå dobbeltklik og forvirring.
+```jsx
+setIsSubmitting(true);
+```
 
-<details>
-<summary>Vejledende løsning</summary>
+og bagefter:
+
+```jsx
+setIsSubmitting(false);
+```
+
+Og i knappen:
 
 ```jsx
 <button type="submit" disabled={isSubmitting}>
-  {isSubmitting ? "Saving..." : "Create post"}
+  {isSubmitting ? "Saving..." : "Save"}
 </button>
 ```
 
-</details>
+Du kan bruge samme idé til delete-knappen med en state som fx `isDeleting`.
+
+### 9.7 Saml `URL` og `headers` i en separat fil
+
+Hvis du vil rydde lidt op, kan du samle de gentagne konstanter i én fil.
+
+Du kan fx lave en fil som:
+
+`src/lib/api.js`
+
+med noget i den her stil:
+
+```jsx
+export const URL = import.meta.env.VITE_SUPABASE_URL;
+
+export const headers = {
+  apikey: import.meta.env.VITE_SUPABASE_APIKEY,
+  "Content-Type": "application/json",
+};
+```
+
+Og derefter importere dem i dine sider:
+
+```jsx
+import { URL, headers } from "../lib/api";
+```
+
+Det er ikke nødvendigt, men det kan gøre koden mere overskuelig, når de samme ting bruges flere steder.
 
 ## 10. Refleksion
 
 Svar kort på disse spørgsmål:
 
-1. Hvad er forskellen på GET, POST, PATCH og DELETE i jeres app?
+1. Hvad er forskellen på GET, POST, PATCH og DELETE i din app?
 2. Hvordan hænger controlled forms sammen med `useState`?
-3. Hvorfor er `onSubmit` og `event.preventDefault()` vigtige?
-4. Hvad var vigtigst for at få jeres forms til at virke?
-5. Hvad var sværest i øvelsen?
-
-## 11. Ekstra udfordringer
-
-Hvis I bliver hurtigt færdige:
-
-- Tilføj en besked når der ingen posts er
-- Tilføj lidt bedre fejltekst
-- Gør loading-teksterne mere tydelige
-- Undersøg hvordan man kan samle `URL` og `headers` i én fil
+3. Hvorfor er `value` og `onChange` vigtige i formularen?
+4. Hvorfor er `event.preventDefault()` vigtig i `handleSubmit`?
+5. Hvordan bruger appen `id` fra URL'en i detail- og update-siderne?
