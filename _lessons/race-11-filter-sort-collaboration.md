@@ -90,4 +90,4 @@ Denne undervisningsgang er t√¶nkt som en buffer-dag forud for, at I for alvor g√
 
 ### Links
 
-- [README: Filtrering & Sortering med Supabase REST](../README.md#7-filtrering--sortering-med-supabase-rest)
+- [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
