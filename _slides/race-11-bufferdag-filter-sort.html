@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RACE 11 - Bufferdag, Filter & Sort + Projektvejledning</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/simple.css">
+    <style>
+      :root {
+        --bg: #0b0f0d;
+        --bg-deep: #050706;
+        --surface: #121715;
+        --surface-strong: #171d1a;
+        --ink: #f5f7f6;
+        --muted: #9aa7a1;
+        --green: #3ecf8e;
+        --green-deep: #008f62;
+        --green-soft: rgba(62, 207, 142, 0.16);
+        --coral: #f08f73;
+        --yellow: #f4c95d;
+        --line: rgba(255, 255, 255, 0.12);
+        --line-strong: rgba(62, 207, 142, 0.34);
+        --code: #070b09;
+      }
+
+      html,
+      body {
+        background: var(--bg-deep);
+      }
+
+      .reveal {
+        background:
+          radial-gradient(circle at 50% -10%, rgba(62, 207, 142, 0.22), transparent 34%),
+          radial-gradient(circle at 100% 20%, rgba(62, 207, 142, 0.08), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%),
+          var(--bg);
+        color: var(--ink);
+        font-family: "Aptos", "Segoe UI", sans-serif;
+      }
+
+      .reveal::before {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 72px 72px;
+        content: "";
+        inset: 0;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 78%);
+        pointer-events: none;
+        position: fixed;
+      }
+
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        color: var(--ink);
+        font-family: "Aptos", "Segoe UI", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .reveal h1 {
+        font-size: 2.72em;
+        line-height: 0.98;
+      }
+
+      .reveal h1 span {
+        color: var(--green);
+        display: block;
+      }
+
+      .reveal h2 {
+        font-size: 1.75em;
+      }
+
+      .reveal h3 {
+        font-size: 1.08em;
+      }
+
+      .reveal p,
+      .reveal li {
+        color: var(--ink);
+        font-size: 0.74em;
+        line-height: 1.38;
+      }
+
+      .reveal small,
+      .reveal .muted {
+        color: var(--muted);
+      }
+
+      .reveal a {
+        color: var(--green);
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.16em;
+      }
+
+      .reveal strong {
+        color: var(--green);
+      }
+
+      .reveal section {
+        text-align: left;
+      }
+
+      .reveal section::before {
+        background: linear-gradient(90deg, var(--green), transparent);
+        border-radius: 999px;
+        content: "";
+        height: 3px;
+        left: 0;
+        opacity: 0.82;
+        position: absolute;
+        top: -1.1rem;
+        width: 92px;
+      }
+
+      .reveal .center {
+        text-align: center;
+      }
+
+      .reveal .center::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .reveal .eyebrow {
+        color: var(--green);
+        display: inline-block;
+        font-size: 0.42em;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      .reveal .lead {
+        color: var(--ink);
+        font-size: 0.95em;
+        line-height: 1.28;
+        max-width: 960px;
+      }
+
+      .reveal .date {
+        border-top: 1px solid var(--line-strong);
+        color: var(--muted);
+        display: inline-block;
+        font-size: 0.52em;
+        margin-top: 1.2rem;
+        padding-top: 0.65rem;
+      }
+
+      .reveal .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1.1rem;
+      }
+
+      .reveal .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .reveal .panel {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent),
+          var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+        padding: 1rem;
+      }
+
+      .reveal .panel h3 {
+        margin-bottom: 0.35rem;
+      }
+
+      .reveal .panel:hover {
+        border-color: var(--line-strong);
+      }
+
+      .reveal .panel p,
+      .reveal .panel li {
+        font-size: 0.58em;
+      }
+
+      .reveal .tag {
+        background: var(--green-soft);
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        color: var(--green);
+        display: inline-block;
+        font-size: 0.38em;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        margin-right: 0.35rem;
+        padding: 0.28rem 0.55rem;
+        text-transform: uppercase;
+      }
+
+      .reveal .timeline {
+        display: grid;
+        gap: 0.65rem;
+        margin-top: 1.1rem;
+      }
+
+      .reveal .step {
+        align-items: center;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-left: 0.32rem solid var(--green);
+        border-radius: 8px;
+        display: grid;
+        gap: 0.85rem;
+        grid-template-columns: 8rem 1fr;
+        padding: 0.72rem 1rem;
+      }
+
+      .reveal .step strong {
+        color: var(--green);
+        font-size: 0.72em;
+      }
+
+      .reveal .step span {
+        color: var(--muted);
+        font-size: 0.58em;
+      }
+
+      .reveal pre {
+        box-shadow: none;
+        margin-top: 1rem;
+        width: 100%;
+      }
+
+      .reveal pre code {
+        background: var(--code);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: #d6f6e7;
+        font-size: 0.68em;
+        line-height: 1.45;
+        max-height: none;
+        padding: 1rem;
+      }
+
+      .reveal code {
+        color: var(--green);
+        font-family: "SFMono-Regular", "Consolas", monospace;
+      }
+
+      .reveal .quote {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-left: 0.36rem solid var(--green);
+        border-radius: 8px;
+        color: var(--ink);
+        font-family: "Aptos", "Segoe UI", sans-serif;
+        font-size: 1.18em;
+        line-height: 1.22;
+        margin-top: 1.2rem;
+        padding: 1rem 1.1rem;
+      }
+
+      .reveal .question {
+        background: var(--green);
+        border-radius: 8px;
+        color: #04130d;
+        display: inline-block;
+        font-size: 0.74em;
+        font-weight: 800;
+        margin-top: 1rem;
+        padding: 0.45rem 0.75rem;
+      }
+
+      .reveal .checklist li {
+        margin: 0.4rem 0;
+      }
+
+      .reveal li::marker {
+        color: var(--green);
+      }
+
+      .reveal .controls,
+      .reveal .progress {
+        color: var(--green);
+      }
+
+      @media (max-width: 780px) {
+        .reveal .grid,
+        .reveal .grid.two {
+          grid-template-columns: 1fr;
+        }
+
+        .reveal .step {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="center">
+          <span class="eyebrow">RACE 11 - Web App</span>
+          <h1>Bufferdag <span>filter & sortering</span></h1>
+          <p class="lead">Opsamling, afklaring og projektarbejde forud for programmeringen af jeres Web Application-projekt.</p>
+          <p class="date">13-05-2026</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">Rammen for dagen</span>
+          <h2>I dag er bevidst lidt åben</h2>
+          <p class="lead">Det eneste faste punkt er et kort oplæg om filtrering og sortering. Resten bruger vi på det, der hjælper jer bedst videre.</p>
+          <div class="grid">
+            <div class="panel">
+              <h3>Opsamling</h3>
+              <p>Supabase, CRUD, REST, HTTP, React, state, komponenter eller projektstruktur.</p>
+            </div>
+            <div class="panel">
+              <h3>Afklaring</h3>
+              <p>Spørgsmål inden I går dybere ind i programmeringsdelen af projektet.</p>
+            </div>
+            <div class="panel">
+              <h3>Projektarbejde</h3>
+              <p>Hvis I bare har brug for ro, sparring og vejledning, er det helt fint.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <span class="eyebrow">Plan</span>
+          <h2>En mulig dagsrytme</h2>
+          <div class="timeline">
+            <div class="step">
+              <strong>Først</strong>
+              <span>Kort check-in: Hvad har I brug for i dag?</span>
+            </div>
+            <div class="step">
+              <strong>Fælles input</strong>
+              <span>Filtrering og sortering med Supabase og JavaScript.</span>
+            </div>
+            <div class="step">
+              <strong>Herefter</strong>
+              <span>Opsamling, Git/GitHub/deploy eller webapp-projektarbejde.</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <span class="eyebrow">Check-in</span>
+          <h2>Hvad vil hjælpe jer mest videre?</h2>
+          <div class="grid two">
+            <div class="panel">
+              <span class="tag">A</span>
+              <h3>Teknisk opsamling</h3>
+              <p>Vi samler op på React, Supabase, CRUD, REST eller fetch.</p>
+            </div>
+            <div class="panel">
+              <span class="tag">B</span>
+              <h3>Collaboration</h3>
+              <p>Vi ser på repo, branches, commits, pull requests og merge.</p>
+            </div>
+            <div class="panel">
+              <span class="tag">C</span>
+              <h3>Deployment</h3>
+              <p>Vi ser på GitHub Pages og environment variables.</p>
+            </div>
+            <div class="panel">
+              <span class="tag">D</span>
+              <h3>Projektarbejde</h3>
+              <p>I arbejder videre, og jeg hjælper grupperne undervejs.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <span class="eyebrow">Filter & sortering</span>
+          <h2>Hvorfor er det relevant?</h2>
+          <p class="lead">Når jeres app har data, skal brugeren kunne finde det rigtige indhold hurtigt.</p>
+          <div class="quote">Filtrering og sortering er ofte forskellen på "data på en side" og en app, der faktisk kan bruges.</div>
+        </section>
+
+        <section>
+          <span class="eyebrow">Supabase REST</span>
+          <h2>Filter sker med query parameters</h2>
+          <p>Supabase bruger query parameters til at filtrere direkte i databasen.</p>
+          <pre><code data-trim>
+/rest/v1/products?id=eq.1
+
+/rest/v1/products?price=lt.1000
+
+/rest/v1/products?title=ilike.*mac*
+          </code></pre>
+          <p class="muted">Pointen: Vi henter kun de data, vi faktisk skal bruge.</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">Operatorer</span>
+          <h2>De mest brugbare i jeres projekt</h2>
+          <div class="grid">
+            <div class="panel">
+              <h3><code>eq</code></h3>
+              <p>Lig med. God til detail views og relationer.</p>
+            </div>
+            <div class="panel">
+              <h3><code>lt</code> / <code>gt</code></h3>
+              <p>Mindre end og større end. God til pris, alder, rating, datoer.</p>
+            </div>
+            <div class="panel">
+              <h3><code>ilike</code></h3>
+              <p>Tekstsøgning uden forskel på store og små bogstaver.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <span class="eyebrow">Sortering</span>
+          <h2>Sortering sker med <code>order</code></h2>
+          <pre><code data-trim>
+/rest/v1/products?order=price.asc
+
+/rest/v1/products?order=price.desc
+
+/rest/v1/products?order=created_at.desc
+          </code></pre>
+          <p class="muted">Billigste først, dyreste først, nyeste først - samme mønster.</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">Kombination</span>
+          <h2>Filter, sortering og limit kan kombineres</h2>
+          <pre><code data-trim>
+/rest/v1/products?price=lt.5000&order=price.asc&limit=5
+          </code></pre>
+          <p class="lead">Læs URL'en som en sætning: produkter under 5000, sorteret billigste først, maks 5 resultater.</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">JavaScript</span>
+          <h2>Det er stadig bare et <code>fetch</code></h2>
+          <pre><code class="language-js" data-trim>
+const response = await fetch(
+  "https://xyz.supabase.co/rest/v1/products?price=lt.5000&order=price.asc&limit=5",
+  {
+    headers: {
+      apikey: "din_sb_publishable_xyz"
+    }
+  }
+);
+
+const data = await response.json();
+          </code></pre>
+        </section>
+
+        <section>
+          <span class="eyebrow">React</span>
+          <h2>UI styrer query'en</h2>
+          <p class="lead">I React kommer filter og sortering typisk fra state: inputfelter, dropdowns, knapper eller tabs.</p>
+          <pre><code class="language-js" data-trim>
+const price = 5000;
+const order = "price";
+const direction = "asc";
+
+const url =
+  `${baseUrl}/products?price=lt.${price}&order=${order}.${direction}`;
+          </code></pre>
+        </section>
+
+        <section>
+          <span class="eyebrow">Mini-demo</span>
+          <h2>Det vi kan teste sammen</h2>
+          <ul class="checklist">
+            <li>Et tekstfelt der filtrerer på titel med <code>ilike</code>.</li>
+            <li>En select der sorterer efter pris eller dato.</li>
+            <li>En knap der nulstiller filteret.</li>
+            <li>Loading og fejlbesked, så brugeren kan mærke hvad der sker.</li>
+          </ul>
+        </section>
+
+        <section>
+          <span class="eyebrow">Valg efter oplægget</span>
+          <h2>Hvad gør vi nu?</h2>
+          <div class="grid two">
+            <div class="panel">
+              <h3>Fælles opsamling</h3>
+              <p>Vi tager spørgsmål i plenum og samler de vigtigste pointer.</p>
+            </div>
+            <div class="panel">
+              <h3>Git/GitHub/deploy</h3>
+              <p>Vi arbejder med repo, branches, PRs, GitHub Pages og environment variables.</p>
+            </div>
+            <div class="panel">
+              <h3>Gruppevejledning</h3>
+              <p>Jeg går rundt og hjælper grupperne videre der, hvor I står.</p>
+            </div>
+            <div class="panel">
+              <h3>Fokuseret arbejdstid</h3>
+              <p>I bruger tiden på jeres Web Application-projekt.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <span class="eyebrow">Projektblik</span>
+          <h2>Inden I programmerer for meget</h2>
+          <ul class="checklist">
+            <li>Hvilke centrale user flows vil I programmere?</li>
+            <li>Hvilke data skal gemmes i Supabase?</li>
+            <li>Hvilke komponenter går igen flere steder?</li>
+            <li>Hvordan kan alle i gruppen bidrage tydeligt med commits?</li>
+            <li>Hvad skal være klar til deployment?</li>
+          </ul>
+        </section>
+
+        <section>
+          <span class="eyebrow">Materialer</span>
+          <h2>Links til i dag</h2>
+          <ul>
+            <li><a href="../README.md#7-filtrering--sortering-med-supabase-rest">Filtrering & Sortering med Supabase REST</a></li>
+            <li><a href="https://github.com/cederdorff/react-router-spa/blob/main/README.md">React Router SPA Template</a></li>
+            <li><a href="https://github.com/cederdorff/react-router-spa/blob/main/docs/template-to-github-pages-setup.md">Fra Template til GitHub Pages</a></li>
+            <li><a href="https://github.com/cederdorff/react-router-spa/blob/main/docs/collaboration-guide.md">Samarbejdsguide</a></li>
+            <li><a href="https://race.notion.site/Deploy-your-React-App-to-GitHub-Pages-1d34f0b9e48e40a1a8c4a4bf01f5bb2a">Deploy your React App to GitHub Pages</a></li>
+          </ul>
+        </section>
+
+        <section class="center">
+          <span class="eyebrow">Arbejd videre</span>
+          <h2>Brug dagen på det, der flytter jeres projekt</h2>
+          <p class="lead">Spørg, test, afklar, commit, prototype, programmér - og få hjælp, når I sidder fast.</p>
+          <p class="question">Hvad er jeres næste bedste skridt?</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        margin: 0.08,
+        controlsTutorial: false,
+        slideNumber: "c/t",
+        transition: "fade",
+        plugins: [RevealHighlight, RevealNotes]
+      });
+    </script>
+  </body>
+</html>
