@@ -598,11 +598,11 @@
           <h2>Filter sker med query parameters</h2>
           <p>Supabase bruger query parameters til at filtrere direkte i databasen.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?id=eq.1
+GET /rest/v1/posts?id=eq.1
 
-/rest/v1/posts?caption=ilike.*aarhus*
+GET /rest/v1/posts?caption=ilike.*aarhus*
 
-/rest/v1/posts?id=gt.5
+GET /rest/v1/posts?id=gt.5
           </code></pre>
           <p class="muted">Pointen: Vi henter kun de data, vi faktisk skal bruge.</p>
         </section>
@@ -612,9 +612,9 @@
           <h2>Hent ét bestemt post</h2>
           <p class="lead">Det her mønster bruger I allerede på detail-siden.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?id=eq.4
+GET /rest/v1/posts?id=eq.4
 
-/rest/v1/posts?id=eq.16
+GET /rest/v1/posts?id=eq.16
           </code></pre>
           <p class="muted"><code>eq</code> betyder equals: kolonnen skal være lig med værdien.</p>
         </section>
@@ -624,11 +624,11 @@
           <h2>Søg i captions</h2>
           <p class="lead"><code>ilike</code> er god til søgning, fordi den ignorerer store og små bogstaver.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?caption=ilike.*aarhus*
+GET /rest/v1/posts?caption=ilike.*aarhus*
 
-/rest/v1/posts?caption=ilike.*coffee*
+GET /rest/v1/posts?caption=ilike.*coffee*
 
-/rest/v1/posts?caption=ilike.*city*
+GET /rest/v1/posts?caption=ilike.*city*
           </code></pre>
           <p class="muted"><code>*aarhus*</code> betyder: indeholder teksten "aarhus".</p>
         </section>
@@ -638,11 +638,11 @@
           <h2>Filtrer på id</h2>
           <p class="lead">Id kan bruges til at hente nyere/oprettede rækker i en simpel demo.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?id=gt.5
+GET /rest/v1/posts?id=gt.5
 
-/rest/v1/posts?id=lt.8
+GET /rest/v1/posts?id=lt.8
 
-/rest/v1/posts?id=gte.15
+GET /rest/v1/posts?id=gte.15
           </code></pre>
           <p class="muted"><code>gt</code>, <code>lt</code> og <code>gte</code> betyder greater than, less than og greater than or equal.</p>
         </section>
@@ -652,11 +652,11 @@
           <h2>Filtrer på dato</h2>
           <p class="lead">Dato-filter er nyttigt, når I vil vise nye posts eller indhold fra en bestemt periode.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?created_at=gte.2026-04-27
+GET /rest/v1/posts?created_at=gte.2026-04-27
 
-/rest/v1/posts?created_at=lt.2026-04-24
+GET /rest/v1/posts?created_at=lt.2026-04-24
 
-/rest/v1/posts?created_at=gte.2026-04-23&created_at=lt.2026-04-24
+GET /rest/v1/posts?created_at=gte.2026-04-23&created_at=lt.2026-04-24
           </code></pre>
           <p class="muted">Datoer kan filtreres med de samme operatorer som tal.</p>
         </section>
@@ -666,11 +666,11 @@
           <h2>Kombiner flere filtre</h2>
           <p class="lead">Flere query parameters sættes sammen med <code>&</code>.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?caption=ilike.*aarhus*&id=gt.4
+GET /rest/v1/posts?caption=ilike.*aarhus*&id=gt.4
 
-/rest/v1/posts?caption=ilike.*city*&created_at=gte.2026-04-23
+GET /rest/v1/posts?caption=ilike.*city*&created_at=gte.2026-04-23
 
-/rest/v1/posts?caption=ilike.*aarhus*&order=created_at.desc&limit=3
+GET /rest/v1/posts?caption=ilike.*aarhus*&order=created_at.desc&limit=3
           </code></pre>
           <p class="muted">Når query'en bliver lang, er <code>URLSearchParams</code> en god ven i React.</p>
         </section>
@@ -698,11 +698,11 @@
           <span class="eyebrow">Sortering</span>
           <h2>Sortering sker med <code>order</code></h2>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?order=created_at.desc
+GET /rest/v1/posts?order=created_at.desc
 
-/rest/v1/posts?order=created_at.asc
+GET /rest/v1/posts?order=created_at.asc
 
-/rest/v1/posts?order=caption.asc
+GET /rest/v1/posts?order=caption.asc
           </code></pre>
           <p class="muted">Nyeste først, ældste først, alfabetisk efter caption - samme mønster.</p>
         </section>
@@ -711,7 +711,7 @@
           <span class="eyebrow">Kombination</span>
           <h2>Filter, sortering og limit kan kombineres</h2>
           <pre data-code-label="REST"><code class="language-http" data-trim>
-/rest/v1/posts?caption=ilike.*aarhus*&order=created_at.desc&limit=5
+GET /rest/v1/posts?caption=ilike.*aarhus*&order=created_at.desc&limit=5
           </code></pre>
           <p class="lead">Læs URL'en som en sætning: posts hvor caption indeholder "aarhus", nyeste først, maks 5 resultater.</p>
         </section>
