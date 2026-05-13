@@ -73,7 +73,7 @@
       }
 
       .reveal h2 {
-        font-size: 1.75em;
+        font-size: 1.64em;
       }
 
       .reveal h3 {
@@ -83,8 +83,8 @@
       .reveal p,
       .reveal li {
         color: var(--ink);
-        font-size: 0.74em;
-        line-height: 1.38;
+        font-size: 0.71em;
+        line-height: 1.34;
       }
 
       .reveal small,
@@ -139,8 +139,8 @@
 
       .reveal .lead {
         color: var(--ink);
-        font-size: 0.95em;
-        line-height: 1.28;
+        font-size: 0.89em;
+        line-height: 1.24;
         max-width: 960px;
       }
 
@@ -155,9 +155,9 @@
 
       .reveal .grid {
         display: grid;
-        gap: 1rem;
+        gap: 0.82rem;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        margin-top: 1.1rem;
+        margin-top: 0.95rem;
       }
 
       .reveal .grid.two {
@@ -167,9 +167,9 @@
       .reveal .context-layout {
         align-items: center;
         display: grid;
-        gap: 1.1rem;
+        gap: 0.95rem;
         grid-template-columns: 1.08fr 0.92fr;
-        margin-top: 1rem;
+        margin-top: 0.9rem;
       }
 
       .reveal .panel {
@@ -179,7 +179,7 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-        padding: 1rem;
+        padding: 0.86rem;
       }
 
       .reveal .panel h3 {
@@ -192,7 +192,7 @@
 
       .reveal .panel p,
       .reveal .panel li {
-        font-size: 0.58em;
+        font-size: 0.55em;
       }
 
       .reveal .tag {
@@ -211,8 +211,8 @@
 
       .reveal .timeline {
         display: grid;
-        gap: 0.65rem;
-        margin-top: 1.1rem;
+        gap: 0.52rem;
+        margin-top: 0.9rem;
       }
 
       .reveal .step {
@@ -222,9 +222,9 @@
         border-left: 0.32rem solid var(--green);
         border-radius: 8px;
         display: grid;
-        gap: 0.85rem;
+        gap: 0.72rem;
         grid-template-columns: 8rem 1fr;
-        padding: 0.72rem 1rem;
+        padding: 0.62rem 0.9rem;
       }
 
       .reveal .step strong {
@@ -242,9 +242,9 @@
         border: 1px solid var(--line);
         border-radius: 10px;
         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
-        margin-top: 1rem;
+        margin-top: 0.85rem;
         overflow: hidden;
-        padding-top: 1.65rem;
+        padding-top: 1.5rem;
         position: relative;
         width: 100%;
       }
@@ -283,10 +283,10 @@
         border-radius: 0;
         color: #d6f6e7;
         display: block;
-        font-size: 0.68em;
-        line-height: 1.45;
+        font-size: 0.63em;
+        line-height: 1.38;
         max-height: none;
-        padding: 1rem;
+        padding: 0.9rem;
         white-space: pre-wrap;
         word-break: break-word;
       }
@@ -294,7 +294,7 @@
       .reveal pre code.hljs {
         background: transparent;
         color: #d6f6e7;
-        padding: 1rem;
+        padding: 0.9rem;
       }
 
       .reveal .hljs-keyword,
@@ -335,9 +335,9 @@
       }
 
       .reveal pre.data-sample code {
-        font-size: 0.42em;
-        line-height: 1.28;
-        max-height: 520px;
+        font-size: 0.39em;
+        line-height: 1.23;
+        max-height: 470px;
         overflow: auto;
       }
 
@@ -362,10 +362,10 @@
         border-radius: 8px;
         color: var(--ink);
         font-family: "Aptos", "Segoe UI", sans-serif;
-        font-size: 1.18em;
-        line-height: 1.22;
-        margin-top: 1.2rem;
-        padding: 1rem 1.1rem;
+        font-size: 1.04em;
+        line-height: 1.18;
+        margin-top: 0.95rem;
+        padding: 0.85rem 0.95rem;
       }
 
       .reveal .question {
@@ -380,7 +380,7 @@
       }
 
       .reveal .checklist li {
-        margin: 0.4rem 0;
+        margin: 0.28rem 0;
       }
 
       .reveal li::marker {
@@ -486,6 +486,23 @@
           <h2>Hvorfor er det relevant?</h2>
           <p class="lead">Når en webapp har dynamisk data, skal brugeren kunne finde det rigtige indhold hurtigt.</p>
           <div class="quote">Filtrering og sortering er ofte forskellen på "data på en side" og en app, der faktisk kan bruges.</div>
+        </section>
+
+        <section>
+          <span class="eyebrow">Client / server</span>
+          <h2>Filtrering kan ske to steder</h2>
+          <p class="lead">I en client-server-model kan vi både filtrere og sortere på serveren og på klienten.</p>
+          <div class="grid two">
+            <div class="panel">
+              <h3>Server-side</h3>
+              <p>Supabase vælger og sorterer rækkerne, før data sendes til appen.</p>
+            </div>
+            <div class="panel">
+              <h3>Client-side</h3>
+              <p>React/JavaScript filtrerer eller sorterer de data, vi allerede har hentet.</p>
+            </div>
+          </div>
+          <p class="muted">I dag ser vi begge dele, men med fokus på hvordan Supabase kan gøre arbejdet allerede i requesten.</p>
         </section>
 
         <section>
@@ -622,7 +639,7 @@ GET /rest/v1/posts?id=eq.16
         <section>
           <span class="eyebrow">Filter-eksempler</span>
           <h2>Søg i captions</h2>
-          <p class="lead"><code>ilike</code> er god til søgning, fordi den ignorerer store og små bogstaver.</p>
+          <p class="lead"><code>ilike</code> betyder case-insensitive <code>like</code>: vi filtrerer en tekstkolonne ved at matche et mønster uden forskel på store og små bogstaver.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
 GET /rest/v1/posts?caption=ilike.*aarhus*
 
@@ -630,7 +647,32 @@ GET /rest/v1/posts?caption=ilike.*coffee*
 
 GET /rest/v1/posts?caption=ilike.*city*
           </code></pre>
-          <p class="muted"><code>*aarhus*</code> betyder: indeholder teksten "aarhus".</p>
+          <p class="muted">I praksis bruger vi ofte <code>*</code> på begge sider, når brugeren bare skal kunne søge efter tekst, der indgår et sted i caption.</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">Filter-logik</span>
+          <h2>Sådan læses <code>ilike</code></h2>
+          <p class="lead">Selve filteret er <code>ilike</code>. Stjernerne bestemmer, hvor i teksten matchet må ligge.</p>
+          <div class="grid two">
+            <div class="panel">
+              <h3><code>ilike.aarhus</code></h3>
+              <p>Caption skal være præcis "aarhus", men store og små bogstaver er ligegyldige.</p>
+            </div>
+            <div class="panel">
+              <h3><code>ilike.aarhus*</code></h3>
+              <p>Caption skal starte med "aarhus".</p>
+            </div>
+            <div class="panel">
+              <h3><code>ilike.*aarhus</code></h3>
+              <p>Caption skal slutte med "aarhus".</p>
+            </div>
+            <div class="panel">
+              <h3><code>ilike.*aarhus*</code></h3>
+              <p>Caption skal indeholde "aarhus" et sted i teksten.</p>
+            </div>
+          </div>
+          <p class="muted"><code>*</code> er wildcard i URL'en og svarer til <code>%</code> i SQL/<code>ILIKE</code>.</p>
         </section>
 
         <section>
@@ -685,7 +727,7 @@ GET /rest/v1/posts?caption=ilike.*aarhus*&order=created_at.desc&limit=3
             </div>
             <div class="panel">
               <h3><code>ilike</code></h3>
-              <p>Søg i captions uden forskel på store og små bogstaver.</p>
+              <p>Case-insensitive tekstfilter. Sammen med <code>*</code> kan det matche præcis tekst, start, slut eller indhold.</p>
             </div>
             <div class="panel">
               <h3><code>gt</code> / <code>lt</code></h3>
@@ -697,6 +739,7 @@ GET /rest/v1/posts?caption=ilike.*aarhus*&order=created_at.desc&limit=3
         <section>
           <span class="eyebrow">Sortering</span>
           <h2>Sortering sker med <code>order</code></h2>
+          <p class="lead"><code>order</code> fortæller først hvilken kolonne vi sorterer på, og derefter retningen: <code>asc</code> eller <code>desc</code>.</p>
           <pre data-code-label="REST"><code class="language-http" data-trim>
 GET /rest/v1/posts?order=created_at.desc
 
@@ -704,7 +747,31 @@ GET /rest/v1/posts?order=created_at.asc
 
 GET /rest/v1/posts?order=caption.asc
           </code></pre>
-          <p class="muted">Nyeste først, ældste først, alfabetisk efter caption - samme mønster.</p>
+          <p class="muted"><code>created_at.desc</code> betyder fx: sorter efter <code>created_at</code> i faldende rækkefølge.</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">Sorterings-logik</span>
+          <h2>Sådan læses <code>asc</code> og <code>desc</code></h2>
+          <div class="grid two">
+            <div class="panel">
+              <h3><code>asc</code></h3>
+              <p>Ascending. Laveste til højeste værdi, A til Z eller ældste til nyeste.</p>
+            </div>
+            <div class="panel">
+              <h3><code>desc</code></h3>
+              <p>Descending. Højeste til laveste værdi, Z til A eller nyeste til ældste.</p>
+            </div>
+            <div class="panel">
+              <h3><code>created_at.desc</code></h3>
+              <p>Nyeste posts først, fordi de seneste datoer ligger øverst.</p>
+            </div>
+            <div class="panel">
+              <h3><code>caption.asc</code></h3>
+              <p>Caption sorteres alfabetisk fra A til Z.</p>
+            </div>
+          </div>
+          <p class="muted">Mønsteret er: <code>order=kolonne.retning</code>.</p>
         </section>
 
         <section>
@@ -785,8 +852,8 @@ setPosts(data);
           <pre data-code-label="HomePage.jsx"><code class="language-js" data-trim data-line-numbers>
 const params = new URLSearchParams();
 
-if (searchText) {
-  params.set("caption", `ilike.*${searchText}*`);
+if (searchText.trim()) {
+  params.set("caption", `ilike.*${searchText.trim()}*`);
 }
 
 params.set("order", sort);
@@ -810,7 +877,7 @@ const response = await fetch(`${URL}?${params}`, { headers });
             </div>
             <div class="step">
               <strong>3. Fetch</strong>
-              <span><code>useEffect</code> kører igen og henter posts med en ny query.</span>
+              <span><code>useEffect</code> kører igen, fordi dependency array lytter på ændringer i <code>searchText</code> og <code>sort</code>.</span>
             </div>
             <div class="step">
               <strong>4. UI</strong>
@@ -865,21 +932,17 @@ useEffect(() => {
   async function getPosts() {
     const params = new URLSearchParams();
 
-    if (searchText.trim()) {
-      params.set("caption", `ilike.*${searchText.trim()}*`);
-    }
-
+    if (searchText.trim()) params.set("caption", `ilike.*${searchText.trim()}*`);
     params.set("order", sort);
 
     const response = await fetch(`${URL}?${params}`, { headers });
-    const data = await response.json();
-    setPosts(data);
+    setPosts(await response.json());
   }
 
   getPosts();
 }, [searchText, sort]);
           </code></pre>
-          <p class="muted">Dependency array betyder: hent igen, når filter eller sortering ændrer sig.</p>
+          <p class="muted"><code>useEffect</code> er nyttig her, fordi dependency array får den til at køre igen, når <code>searchText</code> eller <code>sort</code> ændrer sig.</p>
         </section>
 
         <section>
@@ -899,13 +962,73 @@ function resetFilters() {
         </section>
 
         <section>
+          <span class="eyebrow">Lokalt i React</span>
+          <h2>Filtrering kan stadig ske i JavaScript</h2>
+          <pre data-code-label="HomePage.jsx"><code class="language-js" data-trim data-line-numbers>
+const filteredPosts = posts.filter((post) =>
+  post.caption.toLowerCase().includes(searchText.trim().toLowerCase())
+);
+
+// ...
+{filteredPosts.map((post) => (
+  <PostCard key={post.id} post={post} />
+))}
+          </code></pre>
+          <p class="muted">Det minder om det, I allerede har gjort: hent først data, og filtrer derefter arrayet i React.</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">Lokalt i React</span>
+          <h2>Sortering kan også ske lokalt</h2>
+          <p class="lead">Når alle posts ligger i <code>posts</code>, kan vi lave en kopi og sortere den i JavaScript.</p>
+          <pre data-code-label="HomePage.jsx"><code class="language-js" data-trim data-line-numbers>
+const visiblePosts = [...posts].sort((a, b) => {
+  if (sort === "created_at.desc") {
+    return new Date(b.created_at) - new Date(a.created_at);
+  }
+
+  if (sort === "created_at.asc") {
+    return new Date(a.created_at) - new Date(b.created_at);
+  }
+
+  return a.caption.localeCompare(b.caption);
+});
+          </code></pre>
+          <p class="muted"><code>[...posts]</code> laver en kopi, så vi ikke sorterer direkte i state-arrayet.</p>
+        </section>
+
+        <section>
+          <span class="eyebrow">Begge dele virker</span>
+          <h2>Lokal logik vs. filter i Supabase</h2>
+          <div class="grid two">
+            <div class="panel">
+              <h3>Lokalt i React</h3>
+              <p>Godt når data allerede er hentet, og listen er lille eller mellemstor.</p>
+            </div>
+            <div class="panel">
+              <h3>I Supabase query</h3>
+              <p>Godt når databasen selv skal finde de rigtige rækker, før de sendes til appen.</p>
+            </div>
+            <div class="panel">
+              <h3>Fordel lokalt</h3>
+              <p>Nemt at forstå, hurtigt at bygge og godt til tidlige øvelser i React/JavaScript.</p>
+            </div>
+            <div class="panel">
+              <h3>Fordel i backend</h3>
+              <p>Færre data over netværket og mere præcise requests, især når tabellen vokser.</p>
+            </div>
+          </div>
+          <p class="muted">Pointen er ikke enten/eller. Pointen er at vælge det sted, der giver mest mening for opgaven.</p>
+        </section>
+
+        <section>
           <span class="eyebrow">Mini-demo</span>
           <h2>Det vi kan teste sammen</h2>
           <ul class="checklist">
             <li>Et tekstfelt der filtrerer på <code>caption</code> med <code>ilike</code>.</li>
-            <li>En select der sorterer efter <code>created_at</code>, <code>id</code> eller <code>caption</code>.</li>
+            <li>En select der sorterer efter <code>created_at</code> eller <code>caption</code>.</li>
             <li>En knap der nulstiller filteret.</li>
-            <li>Loading og fejlbesked, så brugeren kan mærke hvad der sker.</li>
+            <li>At <code>useEffect</code> henter nye posts igen, når filter eller sortering ændrer sig.</li>
           </ul>
         </section>
 
