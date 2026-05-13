@@ -72,7 +72,7 @@ Denne undervisningsgang er t√¶nkt som en buffer-dag forud for, at I for alvor g√
 
 ### Slides
 
-- [RACE 11 - Bufferdag, Filter & Sort + Projektvejledning](https://cederdorff.com/race/slides/race-11-bufferdag-filter-sort.pdf)
+- [RACE 11 - Bufferdag, Filter & Sort + Projektvejledning](https://cederdorff.com/web-app-supabase/race-11-bufferdag-filter-sort.html)
 - [Git, GitHub & Source Control](https://cederdorff.com/race/slides/git-github-and-source-control.pdf)
 
 ### Opgaver
