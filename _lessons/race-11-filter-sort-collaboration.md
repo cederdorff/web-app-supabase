@@ -86,8 +86,12 @@ Denne undervisningsgang er t√¶nkt som en buffer-dag forud for, at I for alvor g√
 
 - [react-router-spa](https://github.com/cederdorff/react-router-spa)
 - [post-app-supabase](https://github.com/cederdorff/post-app-supabase)
+  - [Branch: filter-server-side](https://github.com/cederdorff/post-app-supabase/tree/filter-server-side)
+  - [Branch: filter-client-side](https://github.com/cederdorff/post-app-supabase/tree/filter-client-side)
 - [cederdorff repositories](https://github.com/cederdorff?tab=repositories)
 
 ### Links
 
 - [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
+- [Post App - filter-server-side branch](https://github.com/cederdorff/post-app-supabase/tree/filter-server-side)
+- [Post App - filter-client-side branch](https://github.com/cederdorff/post-app-supabase/tree/filter-client-side)
