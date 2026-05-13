@@ -417,66 +417,20 @@
 
         <section>
           <span class="eyebrow">Rammen for dagen</span>
-          <h2>I dag er bevidst lidt åben</h2>
-          <p class="lead">Det eneste faste punkt er et kort oplæg om filtrering og sortering. Resten bruger vi på det, der hjælper jer bedst videre.</p>
+          <h2>Sådan bruger vi dagen</h2>
+          <p class="lead">Vi starter med et kort oplæg om filtrering og sortering. Derefter bruger vi tiden på det, der hjælper jer bedst videre i jeres webapp-projekt.</p>
           <div class="grid">
             <div class="panel">
+              <h3>Kort oplæg</h3>
+              <p>Filtrering og sortering med Supabase, React og JavaScript.</p>
+            </div>
+            <div class="panel">
               <h3>Opsamling</h3>
-              <p>Supabase, CRUD, REST, HTTP, React, state, komponenter eller projektstruktur.</p>
-            </div>
-            <div class="panel">
-              <h3>Afklaring</h3>
-              <p>Spørgsmål inden I går dybere ind i programmeringsdelen af projektet.</p>
+              <p>Spørgsmål om React, Supabase, fetch, CRUD eller projektstruktur.</p>
             </div>
             <div class="panel">
               <h3>Projektarbejde</h3>
-              <p>Hvis I bare har brug for ro, sparring og vejledning, er det helt fint.</p>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <span class="eyebrow">Plan</span>
-          <h2>En mulig dagsrytme</h2>
-          <div class="timeline">
-            <div class="step">
-              <strong>Først</strong>
-              <span>Kort check-in: Hvad har I brug for i dag?</span>
-            </div>
-            <div class="step">
-              <strong>Fælles input</strong>
-              <span>Filtrering og sortering med Supabase og JavaScript.</span>
-            </div>
-            <div class="step">
-              <strong>Herefter</strong>
-              <span>Opsamling, Git/GitHub/deploy eller webapp-projektarbejde.</span>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <span class="eyebrow">Check-in</span>
-          <h2>Hvad vil hjælpe jer mest videre?</h2>
-          <div class="grid two">
-            <div class="panel">
-              <span class="tag">A</span>
-              <h3>Teknisk opsamling</h3>
-              <p>Vi samler op på React, Supabase, CRUD, REST eller fetch.</p>
-            </div>
-            <div class="panel">
-              <span class="tag">B</span>
-              <h3>Collaboration</h3>
-              <p>Vi ser på repo, branches, commits, pull requests og merge.</p>
-            </div>
-            <div class="panel">
-              <span class="tag">C</span>
-              <h3>Deployment</h3>
-              <p>Vi ser på GitHub Pages og environment variables.</p>
-            </div>
-            <div class="panel">
-              <span class="tag">D</span>
-              <h3>Projektarbejde</h3>
-              <p>I arbejder videre, og jeg hjælper grupperne undervejs.</p>
+              <p>I arbejder videre, og jeg hjælper med sparring, afklaring og vejledning.</p>
             </div>
           </div>
         </section>
@@ -974,27 +928,26 @@ const filteredPosts = posts.filter((post) =>
   <PostCard key={post.id} post={post} />
 ))}
           </code></pre>
-          <p class="muted">Det minder om det, I allerede har gjort: hent først data, og filtrer derefter arrayet i React.</p>
+          <p class="muted">I client-side versionen henter <code>useEffect</code> alle posts én gang, og derefter filtrerer vi dem lokalt i React.</p>
         </section>
 
         <section>
           <span class="eyebrow">Lokalt i React</span>
           <h2>Sortering kan også ske lokalt</h2>
-          <p class="lead">Når alle posts ligger i <code>posts</code>, kan vi lave en kopi og sortere den i JavaScript.</p>
           <pre data-code-label="HomePage.jsx"><code class="language-js" data-trim data-line-numbers>
-const visiblePosts = [...posts].sort((a, b) => {
+filteredPosts.sort((postA, postB) => {
   if (sort === "created_at.desc") {
-    return new Date(b.created_at) - new Date(a.created_at);
+    return new Date(postB.created_at) - new Date(postA.created_at);
   }
 
   if (sort === "created_at.asc") {
-    return new Date(a.created_at) - new Date(b.created_at);
+    return new Date(postA.created_at) - new Date(postB.created_at);
   }
 
-  return a.caption.localeCompare(b.caption);
+  return postA.caption.localeCompare(postB.caption);
 });
           </code></pre>
-          <p class="muted"><code>[...posts]</code> laver en kopi, så vi ikke sorterer direkte i state-arrayet.</p>
+          <p class="muted">Her sorterer vi direkte på <code>filteredPosts</code>, fordi <code>filter()</code> allerede har lavet et nyt array.</p>
         </section>
 
         <section>
@@ -1025,10 +978,11 @@ const visiblePosts = [...posts].sort((a, b) => {
           <span class="eyebrow">Mini-demo</span>
           <h2>Det vi kan teste sammen</h2>
           <ul class="checklist">
-            <li>Et tekstfelt der filtrerer på <code>caption</code> med <code>ilike</code>.</li>
+            <li>En version hvor <code>useEffect</code> henter alle posts én gang.</li>
+            <li>Et tekstfelt der filtrerer lokalt på <code>caption</code>.</li>
             <li>En select der sorterer efter <code>created_at</code> eller <code>caption</code>.</li>
             <li>En knap der nulstiller filteret.</li>
-            <li>At <code>useEffect</code> henter nye posts igen, når filter eller sortering ændrer sig.</li>
+            <li>At filtrering og sortering bagefter sker lokalt i JavaScript.</li>
           </ul>
         </section>
 
