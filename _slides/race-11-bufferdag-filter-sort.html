@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/simple.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css" />
+    <script>
+      const printStylesheet = document.createElement("link");
+      printStylesheet.rel = "stylesheet";
+      printStylesheet.href = window.location.search.match(/print-pdf/gi)
+        ? "https://cdn.jsdelivr.net/npm/reveal.js@5/dist/print/pdf.css"
+        : "https://cdn.jsdelivr.net/npm/reveal.js@5/dist/print/paper.css";
+      document.head.appendChild(printStylesheet);
+    </script>
     <style>
       :root {
         --bg: #0b0f0d;
@@ -396,6 +404,107 @@
         font-size: 0.94em;
       }
 
+      @media print {
+        html,
+        body,
+        .reveal,
+        .reveal .slides,
+        .reveal .slides section {
+          background: var(--bg) !important;
+        }
+
+        html,
+        body,
+        .reveal,
+        .reveal * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+
+        .reveal,
+        .reveal h1,
+        .reveal h2,
+        .reveal h3,
+        .reveal p,
+        .reveal li,
+        .reveal small,
+        .reveal .muted {
+          color: var(--ink) !important;
+        }
+
+        .reveal h1 span,
+        .reveal .eyebrow,
+        .reveal strong,
+        .reveal a,
+        .reveal code,
+        .reveal .tag,
+        .reveal .step strong {
+          color: var(--green) !important;
+        }
+
+        .reveal .panel,
+        .reveal .step,
+        .reveal .quote,
+        .reveal .app-shot,
+        .reveal pre {
+          background: var(--surface) !important;
+          border-color: var(--line) !important;
+          box-shadow: none !important;
+        }
+
+        .reveal::before {
+          display: none !important;
+        }
+      }
+
+      html.print-pdf,
+      html.print-pdf body {
+        background: var(--bg-deep) !important;
+      }
+
+      html.print-pdf .reveal,
+      html.print-pdf .reveal .slides,
+      html.print-pdf .reveal .slides section {
+        background: var(--bg) !important;
+      }
+
+      html.print-pdf .reveal,
+      html.print-pdf .reveal h1,
+      html.print-pdf .reveal h2,
+      html.print-pdf .reveal h3,
+      html.print-pdf .reveal p,
+      html.print-pdf .reveal li,
+      html.print-pdf .reveal small,
+      html.print-pdf .reveal .muted {
+        color: var(--ink) !important;
+      }
+
+      html.print-pdf .reveal h1 span,
+      html.print-pdf .reveal .eyebrow,
+      html.print-pdf .reveal strong,
+      html.print-pdf .reveal a,
+      html.print-pdf .reveal code,
+      html.print-pdf .reveal .tag,
+      html.print-pdf .reveal .step strong {
+        color: var(--green) !important;
+      }
+
+      html.print-pdf .reveal .panel,
+      html.print-pdf .reveal .step,
+      html.print-pdf .reveal .quote,
+      html.print-pdf .reveal .app-shot,
+      html.print-pdf .reveal pre {
+        background: var(--surface) !important;
+        border-color: var(--line) !important;
+        box-shadow: none !important;
+      }
+
+      html.print-pdf .reveal,
+      html.print-pdf .reveal * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
       @media (max-width: 780px) {
         .reveal .grid,
         .reveal .grid.two,
@@ -484,6 +593,10 @@
                 <li>Hvert card linker til en detail page med <code>id</code>.</li>
                 <li>Filtrering og sortering starter i listen på <code>HomePage</code>.</li>
               </ul>
+              <p class="muted">
+                Repo: <a href="https://github.com/cederdorff/post-app-supabase">cederdorff/post-app-supabase</a><br />
+                HomePage: <a href="https://github.com/cederdorff/post-app-supabase/blob/main/src/pages/HomePage.jsx">src/pages/HomePage.jsx</a>
+              </p>
             </div>
           </div>
         </section>
@@ -1092,6 +1205,16 @@ filteredPosts.sort((postA, postB) => {
           <h2>Links til i dag</h2>
           <ul>
             <li><a href="https://github.com/cederdorff/post-app-supabase">Post App med Supabase</a></li>
+            <li>
+              <a href="https://github.com/cederdorff/post-app-supabase/blob/filter-server-side/src/pages/HomePage.jsx"
+                >Branch: filter-server-side (Supabase/server-side)</a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/cederdorff/post-app-supabase/blob/filter-client-side/src/pages/HomePage.jsx"
+                >Branch: filter-client-side (React/client-side)</a
+              >
+            </li>
             <li>
               <a href="https://github.com/cederdorff/react-router-spa/blob/main/README.md">React Router SPA Template</a>
             </li>
