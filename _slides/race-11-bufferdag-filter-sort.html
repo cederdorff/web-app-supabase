@@ -848,14 +848,15 @@ GET /rest/v1/posts?order=caption.desc
         <section>
           <span class="eyebrow">Sorterings-logik</span>
           <h2>Sådan læses <code>asc</code> og <code>desc</code></h2>
+          <p class="lead"><code>asc</code> og <code>desc</code> beskriver kun retningen. Kolonnen står foran.</p>
           <div class="grid two">
             <div class="panel">
               <h3><code>asc</code></h3>
-              <p>Ascending. Laveste til højeste værdi, A til Z eller ældste til nyeste.</p>
+              <p>A til Z, laveste til højeste eller ældste til nyeste.</p>
             </div>
             <div class="panel">
               <h3><code>desc</code></h3>
-              <p>Descending. Højeste til laveste værdi, Z til A eller nyeste til ældste.</p>
+              <p>Z til A, højeste til laveste eller nyeste til ældste.</p>
             </div>
             <div class="panel">
               <h3><code>created_at.desc</code></h3>
@@ -865,12 +866,8 @@ GET /rest/v1/posts?order=caption.desc
               <h3><code>caption.asc</code></h3>
               <p>Caption sorteres alfabetisk fra A til Z.</p>
             </div>
-            <div class="panel">
-              <h3><code>caption.desc</code></h3>
-              <p>Caption sorteres alfabetisk fra Z til A.</p>
-            </div>
           </div>
-          <p class="muted">Mønsteret er: <code>order=kolonne.retning</code>.</p>
+          <p class="muted">Fx kan <code>caption.desc</code> bruges til alfabetisk Z til A. Mønsteret er: <code>order=kolonne.retning</code>.</p>
         </section>
 
         <section>
